@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.cooper.ece366</groupId>
 	<!-- TODO: Update your team's project name below and refactor using IntelliJ -->
-	<artifactId>project</artifactId>
+	<artifactId>Project Dove</artifactId>
 	<version>0.0.1</version>
 	<modules>
 		<module>server</module>
@@ -68,9 +68,9 @@
 
 	<!-- TODO: update the url to your team's one on the cooper-ece-366 GitHub organization. -->
 	<scm>
-		<url>git@github.com:cooper-ece-366/exempli-gratia.git</url>
-		<connection>git@github.com:cooper-ece-366/exempli-gratia.git</connection>
-		<developerConnection>scm:git:git@github.com:cooper-ece-366/exempli-gratia.git</developerConnection>
+		<url>git@github.com:cooper-ece-366/will-xiao-jaewon.git</url>
+		<connection>git@github.com:cooper-ece-366/will-xiao-jaewon.git</connection>
+		<developerConnection>scm:git:git@github.com:cooper-ece-366/will-xiao-jaewon.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
