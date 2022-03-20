@@ -1,2 +1,3 @@
-# will-xiao-jaewon
-ECE 366 Spring 2022 -- Will Wu, Xiao Lin, Jaewon Cho
+# Project Dove
+
+We plan to develop a mobile app that retailers would use to display store-specific policies regarding masks and social distancing and track population density in-store using QR codes real time.
