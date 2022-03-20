@@ -1,0 +1,4 @@
+app.version=NOTFORMALLYBUILT
+maven.version=${project.version}
+debug=false
+logging.level.org.springframework.boot.autoconfigure=INFO
