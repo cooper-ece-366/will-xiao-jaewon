@@ -25,4 +25,11 @@ public class ControllerApi {
         String timeString = objectMapper.writeValueAsString(theTime);
         return(timeString);
     }
+
+    @GetMapping("/store")
+    public String getStore() throws JsonProcessingException {
+        ApiStore store = new ApiStore();
+        String storeString = objectMapper.writeValueAsString(store);
+        return(storeString);
+    }
 }
