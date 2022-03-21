@@ -12,6 +12,7 @@ public class Server {
         logger.info("Example log from {}", Server.class.getSimpleName());
         System.out.println("The Server says hi!");
 
+
         /* TODO:WIP
         try {
 
