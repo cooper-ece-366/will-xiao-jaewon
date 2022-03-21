@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.*;
 
-public class ApiStore {
+public class ApiStore { // edited by Will
     //TODO: Change the hard-coded store info to SQL
     //Hard-coded store name and information
 
