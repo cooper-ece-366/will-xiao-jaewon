@@ -38,12 +38,12 @@ public class ApiStore {
             String sql = "SELECT * FROM javabase.stores";
             ResultSet rs = myStmt.executeQuery(sql);
 
-            while (rs.next())
+            while (rs.next()) {
                 newInfo = rs.getString("name") + ":" + rs.getString("rules");
                 //newInfo = rs.getString("rules");
                 //STORE_NAME_LIST.add(newName);
                 finalInfo.add(newInfo);
-
+            }
         }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
