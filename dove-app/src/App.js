@@ -89,7 +89,7 @@ function App(){
                     <h4>Project Dove</h4>
                     <form action="/action_page.php">
                         <input type="text" placeholder="Search store.." name="search"/>
-                            <button className="icon-button" type="submit"><img src={search_icon} className="icon" alt="search"/></button>
+                        <button className="icon-button" type="submit"><img src={search_icon} className="icon" alt="search"/></button>
                     </form>
                 </div>
                 <div className="App-header-right">
