@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useInterval from './useInterval';
 import react_logo from './react-logo.svg';
 import project_dove_logo from './project-dove-logo.jpg';
+import search_icon from './Search.jpg';
 import './App.css';
 
 function App(){
@@ -82,9 +83,14 @@ function App(){
     return(
         <div className="App">
             <header className="App-header">
+
                 <div className="App-header-left">
                     <img src={project_dove_logo} className="Project-logo" alt="project_dove_logo" width={70} length={70}/>
                     <h4>Project Dove</h4>
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search store.." name="search"/>
+                            <button className="icon-button" type="submit"><img src={search_icon} className="icon" alt="search"/></button>
+                    </form>
                 </div>
                 <div className="App-header-right">
                     <a
@@ -109,14 +115,17 @@ function App(){
             <body>
             <br></br>
             <div className="App-body-left">
+                <p>Last refresh time is</p>
+                <p>{currentReadableTime}</p>
                 <button className="button" onClick={App.buttonClicked}>Click to Refresh</button>
-                <p>Last refresh time is {currentReadableTime}</p>
 
             </div>
             <div className="App-body-right">
-                <p>The current version:</p>
+                <p>Current version:</p>
                 <p>{currentVersionString}</p>
             </div>
+            <br/>
+            <br/>
             <br/>
             <br/>
             <br/>
