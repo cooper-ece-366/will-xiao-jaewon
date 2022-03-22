@@ -118,7 +118,6 @@ function App(){
                 <p>Last refresh time is</p>
                 <p>{currentReadableTime}</p>
                 <button className="button" onClick={App.buttonClicked}>Click to Refresh</button>
-
             </div>
             <div className="App-body-right">
                 <p>Current version:</p>
