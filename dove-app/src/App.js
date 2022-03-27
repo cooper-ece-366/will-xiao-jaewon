@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import useInterval from './useInterval';
-import react_logo from './react-logo.svg';
 import project_dove_logo from './project-dove-logo.jpg';
 import search_icon from './Search.jpg';
 import './App.css';
@@ -11,7 +10,9 @@ function App(){
     const [currentReadableTime, setCurrentReadableTime] = useState('0');
     const [currentVersionString, setCurrentVersionString] = useState('<null>');
     const [storeName, setStoreName] = useState('Store xyz');
-    const [storeInfo, setStoreInfo] = useState('24 people in store');
+    const [storeDensity, setStoreDensity] = useState('24 people in store');
+    const [storeAddress, setStoreAddress] = useState('41 Cooper Square');
+    const [storeInfo, setStoreInfo] = useState('Mask required');
 
     const delay = 3000; // in milliseconds
 
@@ -22,6 +23,8 @@ function App(){
             .then(response => response.json())
             .then(data => {
                 setStoreName(data.storeName);
+                setStoreDensity(data.storeDensity);
+                setStoreAddress(data.storeAddress);
                 setStoreInfo(data.storeInfo);
                 console.log(data);
             })
@@ -87,7 +90,7 @@ function App(){
                 <div className="App-header-left">
                     <img src={project_dove_logo} className="Project-logo" alt="project_dove_logo" width={70} length={70}/>
                     <h4>Project Dove</h4>
-                    <form action="/action_page.php">
+                    <form action="">
                         <input type="text" placeholder="Search store.." name="search"/>
                         <button className="icon-button" type="submit"><img src={search_icon} className="icon" alt="search"/></button>
                     </form>
@@ -113,7 +116,7 @@ function App(){
             </header>
 
             <body>
-            <br></br>
+            <br/>
             <div className="App-body-left">
                 <p>Last refresh time is</p>
                 <p>{currentReadableTime}</p>
@@ -134,9 +137,9 @@ function App(){
             <div style={{background: `CornflowerBlue`}}>
                 <blockquote>
                     <p>Store: {storeName}</p>
-                    <p>Population density: {storeInfo}</p>
-                    <p>location: 40 Cooper Square</p>
-                    <p>Rules: Masks required</p>
+                    <p>Population density: {storeDensity}</p>
+                    <p>Location: {storeAddress}</p>
+                    <p>Rules: {storeInfo}</p>
                 </blockquote>
             </div>
             </body>
