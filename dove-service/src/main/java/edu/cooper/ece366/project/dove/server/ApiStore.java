@@ -13,7 +13,7 @@ public class ApiStore { // edited by Will
 
 
     List<String> STORE_INFO_LIST = List.of(
-            "INFOTEST1:INFOTEST2"
+            "NAMETEST1:POPTEST2:ADDTEST3:RULETEST4"
             );
     List<String> STORE_NAME_LIST = List.of(
             "NAMETEST1"
@@ -25,6 +25,11 @@ public class ApiStore { // edited by Will
     String info;
     String newName;
     String newInfo;
+
+    String storeName;
+    String storeInfo;
+    String storeAddress;
+    String storeDensity;
 
     public ApiStore(){
 
@@ -39,7 +44,7 @@ public class ApiStore { // edited by Will
             ResultSet rs = myStmt.executeQuery(sql);
 
             while (rs.next()) {
-                newInfo = rs.getString("name") + ":" + rs.getString("rules");
+                newInfo = rs.getString("name") + ":" + rs.getString("population") + ":" + rs.getString("address") + ":" + rs.getString("rules");
                 //newInfo = rs.getString("rules");
                 //STORE_NAME_LIST.add(newName);
                 finalInfo.add(newInfo);
@@ -51,15 +56,22 @@ public class ApiStore { // edited by Will
         int r = (int) (Math.random()*finalInfo.size());
         String q = finalInfo.get(r);
         //String p = STORE_NAME_LIST.get(r);
-        String[] parts = q.split(":", 2);
-        this.name = parts[0];
-        this.info = parts[1];
+        String[] parts = q.split(":", 4);
+        this.storeName = parts[0];
+        this.storeDensity = parts[1];
+        this.storeAddress = parts[2];
+        this.storeInfo = parts[3];
     }
     public String getStoreName() {
-        return(this.name);
+        return(this.storeName);
     }
-
+    public String getStoreDensity() {
+        return(this.storeDensity);
+    }
+    public String getStoreAddress() {
+        return(this.storeAddress);
+    }
     public String getStoreInfo() {
-        return(this.info);
+        return(this.storeInfo);
     }
 }
