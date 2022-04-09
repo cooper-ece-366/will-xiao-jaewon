@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import useInterval from './useInterval';
-import project_dove_logo from './project-dove-logo.jpg';
-import search_icon from './Search.jpg';
+import useInterval from '../common/useInterval';
 import './App.css';
+import {delay} from "../const/const";
+import AppHeader from "../common/header";
 
+// Edited by Xiao Lin
 function App(){
     const apiUrlPrefix = "http://localhost:8080";
     const [currentTime, setCurrentTime] = useState(Date.now());
@@ -14,7 +15,6 @@ function App(){
     const [storeAddress, setStoreAddress] = useState('41 Cooper Square');
     const [storeInfo, setStoreInfo] = useState('Mask required');
 
-    const delay = 3000; // in milliseconds
 
     const storeApiUrl = apiUrlPrefix.concat("/api/store");
     App.refreshStore = () => {
@@ -85,36 +85,9 @@ function App(){
     //TODO: Fix hard-coded store info
     return(
         <div className="App">
-            <header className="App-header">
-
-                <div className="App-header-left">
-                    <img src={project_dove_logo} className="Project-logo" alt="project_dove_logo" width={70} length={70}/>
-                    <h4>Project Dove</h4>
-                    <form action="">
-                        <input type="text" placeholder="Search store.." name="search"/>
-                        <button className="icon-button" type="submit"><img src={search_icon} className="icon" alt="search"/></button>
-                    </form>
-                </div>
-                <div className="App-header-right">
-                    <a
-                        className="App-link"
-                        href="https://github.com/cooper-ece-366/will-xiao-jaewon"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        About
-                    </a>
-                    <a
-                        className="App-login"
-                        href="https://github.com/cooper-ece-366/will-xiao-jaewon"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Login
-                    </a>
-                </div>
-            </header>
-
+            <div className="app-top-box">
+                <AppHeader/>
+            </div>
             <body>
             <br/>
             <div className="App-body-left">
