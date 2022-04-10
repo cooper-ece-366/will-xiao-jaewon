@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import {THE_APP_NAME} from "../const/const";
+import {THE_APP_NAME} from "../const";
 import './header.css';
 import project_dove_logo from "../project-dove-logo.jpg";
-import search_icon from "../Search.jpg";
 
 //Edited by Xiao Lin
 //TODO: Need edits after implementing login
@@ -16,10 +15,6 @@ class AppHeader extends Component {
                     <div className="app-branding">
                         <Link to="/" className="app-title">{THE_APP_NAME}</Link>
                     </div>
-                    <form action="">
-                        <input type="text" placeholder="Search store.." name="search"/>
-                        <button className="icon-button" type="submit"><img src={search_icon} className="icon" alt="search"/></button>
-                    </form>
                 </div>
                 <div className="App-header-right">
                     <div className="app-options">
@@ -29,7 +24,7 @@ class AppHeader extends Component {
                                     <NavLink to="/map">Map</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/Search">Search</NavLink>
+                                    <NavLink to="/store">Store</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to="/profile">Profile</NavLink>

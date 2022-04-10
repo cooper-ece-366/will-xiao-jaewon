@@ -1,10 +1,52 @@
-import React, { useState } from 'react';
-import useInterval from '../common/useInterval';
+import React, { Component } from 'react';
 import './App.css';
-import {delay} from "../const/const";
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import AppHeader from "../common/header";
+import Home from '../home/Home';
+import NotFound from '../common/NotFound';
+import {Route, Switch} from "react-router-dom";
+import Store from "../User/store/store";
+import LoadingIndicator from "../common/LoadingIndicator";
 
 // Edited by Xiao Lin
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            authenticated: false,
+            currentUser: null,
+            loading: false
+        }
+    }
+
+    render() {
+        if (this.state.loading) {
+            return <LoadingIndicator/>
+        }
+
+
+        return (
+            <div className="App">
+                <div className="app-top-box">
+                    <AppHeader/>
+                </div>
+                <div className="app-body">
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/store" component={Store}/>
+                        <Route component={NotFound}/>
+                    </Switch>
+                </div>
+                <Alert stack={{limit: 3}}
+                       timeout={3000}
+                       position='top-right' effect='slide' offset={65}/>
+            </div>
+        );
+    }
+}
+/*
 function App(){
     const apiUrlPrefix = "http://localhost:8080";
     const [currentTime, setCurrentTime] = useState(Date.now());
@@ -82,42 +124,23 @@ function App(){
         App.refreshVersionString();
         App.refreshStore();
     }
-    //TODO: Fix hard-coded store info
     return(
         <div className="App">
             <div className="app-top-box">
                 <AppHeader/>
             </div>
-            <body>
-            <br/>
-            <div className="App-body-left">
-                <p>Last refresh time is</p>
-                <p>{currentReadableTime}</p>
-                <button className="button" onClick={App.buttonClicked}>Click to Refresh</button>
+            <div className="app-body">
+                <Routes>
+                    <Route exact path="/" caseSensitive={false} element={<Home />}/>
+                    <Route exact path="/store" caseSensitive={false} element={<Store />}/>
+                    <Route caseSensitive={false} element={<notFound />}/>
+                </Routes>
             </div>
-            <div className="App-body-right">
-                <p>Current version:</p>
-                <p>{currentVersionString}</p>
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <h3>Store information display</h3>
-            <div style={{background: `CornflowerBlue`}}>
-                <blockquote>
-                    <p>Store: {storeName}</p>
-                    <p>Population density: {storeDensity}</p>
-                    <p>Location: {storeAddress}</p>
-                    <p>Rules: {storeInfo}</p>
-                </blockquote>
-            </div>
-            </body>
+            <Alert stack={{limit: 3}}
+                   timeout = {3000}
+                   position='top-right' effect='slide' offset={65} />
         </div>
     )
 }
-
+*/
 export default App;
