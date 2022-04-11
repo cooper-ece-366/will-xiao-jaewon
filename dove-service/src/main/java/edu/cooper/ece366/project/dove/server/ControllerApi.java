@@ -32,4 +32,10 @@ public class ControllerApi {
         String storeString = objectMapper.writeValueAsString(store);
         return(storeString);
     }
+    @GetMapping("/search")
+    public String getSearch() throws JsonProcessingException {
+        ApiSearch search = new ApiSearch();
+        String searchString = objectMapper.writeValueAsString(search);
+        return searchString;
+    }
 }
