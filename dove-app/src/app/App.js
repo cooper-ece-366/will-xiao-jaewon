@@ -1,9 +1,52 @@
-import React, { useState } from 'react';
-import useInterval from './useInterval';
-import project_dove_logo from './project-dove-logo.jpg';
-import search_icon from './Search.jpg';
+import React, { Component } from 'react';
 import './App.css';
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
+import AppHeader from "../common/header";
+import Home from '../home/Home';
+import NotFound from '../common/NotFound';
+import {Route, Switch} from "react-router-dom";
+import Store from "../User/store/store";
+import LoadingIndicator from "../common/LoadingIndicator";
 
+// Edited by Xiao Lin
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            authenticated: false,
+            currentUser: null,
+            loading: false
+        }
+    }
+
+    render() {
+        if (this.state.loading) {
+            return <LoadingIndicator/>
+        }
+
+
+        return (
+            <div className="App">
+                <div className="app-top-box">
+                    <AppHeader/>
+                </div>
+                <div className="app-body">
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/store" component={Store}/>
+                        <Route component={NotFound}/>
+                    </Switch>
+                </div>
+                <Alert stack={{limit: 3}}
+                       timeout={3000}
+                       position='top-right' effect='slide' offset={65}/>
+            </div>
+        );
+    }
+}
+/*
 function App(){
     const apiUrlPrefix = "http://localhost:8080";
     const [currentTime, setCurrentTime] = useState(Date.now());
@@ -14,7 +57,6 @@ function App(){
     const [storeAddress, setStoreAddress] = useState('41 Cooper Square');
     const [storeInfo, setStoreInfo] = useState('Mask required');
 
-    const delay = 3000; // in milliseconds
 
     const storeApiUrl = apiUrlPrefix.concat("/api/store");
     App.refreshStore = () => {
@@ -82,69 +124,23 @@ function App(){
         App.refreshVersionString();
         App.refreshStore();
     }
-    //TODO: Fix hard-coded store info
     return(
         <div className="App">
-            <header className="App-header">
-
-                <div className="App-header-left">
-                    <img src={project_dove_logo} className="Project-logo" alt="project_dove_logo" width={70} length={70}/>
-                    <h4>Project Dove</h4>
-                    <form action="">
-                        <input type="text" placeholder="Search store.." name="search"/>
-                        <button className="icon-button" type="submit"><img src={search_icon} className="icon" alt="search"/></button>
-                    </form>
-                </div>
-                <div className="App-header-right">
-                    <a
-                        className="App-link"
-                        href="https://github.com/cooper-ece-366/will-xiao-jaewon"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        About
-                    </a>
-                    <a
-                        className="App-login"
-                        href="https://github.com/cooper-ece-366/will-xiao-jaewon"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Login
-                    </a>
-                </div>
-            </header>
-
-            <body>
-            <br/>
-            <div className="App-body-left">
-                <p>Last refresh time is</p>
-                <p>{currentReadableTime}</p>
-                <button className="button" onClick={App.buttonClicked}>Click to Refresh</button>
+            <div className="app-top-box">
+                <AppHeader/>
             </div>
-            <div className="App-body-right">
-                <p>Current version:</p>
-                <p>{currentVersionString}</p>
+            <div className="app-body">
+                <Routes>
+                    <Route exact path="/" caseSensitive={false} element={<Home />}/>
+                    <Route exact path="/store" caseSensitive={false} element={<Store />}/>
+                    <Route caseSensitive={false} element={<notFound />}/>
+                </Routes>
             </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <h3>Store information display</h3>
-            <div style={{background: `CornflowerBlue`}}>
-                <blockquote>
-                    <p>Store: {storeName}</p>
-                    <p>Population density: {storeDensity}</p>
-                    <p>Location: {storeAddress}</p>
-                    <p>Rules: {storeInfo}</p>
-                </blockquote>
-            </div>
-            </body>
+            <Alert stack={{limit: 3}}
+                   timeout = {3000}
+                   position='top-right' effect='slide' offset={65} />
         </div>
     )
 }
-
+*/
 export default App;
