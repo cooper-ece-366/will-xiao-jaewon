@@ -1,0 +1,51 @@
+/* Reference1: https://github.com/machadop1407/React-Search-Bar
+   Reference2: https://www.cluemediator.com/search-filter-for-multiple-object-in-reactjs
+   Edited by Xiao Lin */
+
+.searchInputs {
+    margin-top: 50px;
+}
+
+.search input {
+    background-color: white;
+    border: 0;
+    border-radius: 2px 0 0 2px;
+    font-size: 15px;
+    padding: 15px;
+    height: 25px;
+    width: 200px;
+}
+
+.searchIcon {
+    display: inline-grid;
+    height: 40px;
+    width: 50px;
+    place-items: center;
+}
+
+#clearBtn {
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
+}
+
+.box-container {
+    margin: 10px 10px;
+}
+
+.box {
+    display: inline-block;
+    width: 330px;
+    margin: 10px;
+    padding: 10px;
+    line-height: 25px;
+    border-radius: 10px;
+    border: 2px solid black;
+
+}
+
+.clear {
+    clear: both;
+}
