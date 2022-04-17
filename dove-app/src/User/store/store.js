@@ -22,7 +22,6 @@ class Store extends Component {
         };
         this.refreshTime = this.refreshTime.bind(this);
         this.refreshStoreInfo = this.refreshStoreInfo.bind(this);
-        this.buttonClickedRefreshTime = this.buttonClickedRefreshTime.bind(this);
         this.buttonClickedRefreshStoreInfo = this.buttonClickedRefreshStoreInfo.bind(this);
         this.buttonClickedReRender = this.buttonClickedReRender.bind(this);
     }
@@ -43,7 +42,6 @@ class Store extends Component {
             }, () => {console.log(this.state);});
             return;
         });
-        Alert.success("Time refreshed!");
     }
 
     refreshStoreInfo() {
@@ -86,13 +84,9 @@ class Store extends Component {
         return(true);
     }
 
-    buttonClickedRefreshTime() {
-        console.log('Time Button was clicked!');
-        this.refreshTime();
-    }
-
     buttonClickedRefreshStoreInfo() {
-        console.log('Store Button was clicked!');
+        console.log('Store was refreshed!');
+        this.refreshTime();
         this.refreshStoreInfo();
         console.log(this.state.storeName);
     }
@@ -119,7 +113,6 @@ class Store extends Component {
                         <div className="time">
                             <p>Last refresh time is</p>
                             <p>{this.state.readableNow}</p>
-                            <button className="button" onClick={this.buttonClickedRefreshTime}>Click to Refresh Time</button>
                         </div>
                         <div className="information-display">
                             <h3>Store information display</h3>
