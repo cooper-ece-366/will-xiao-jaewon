@@ -5,7 +5,8 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './store.css';
-import search_icon from "../../Search.jpg";
+import Search from "../../common/Search";
+import StoreData from "../../data.json";
 
 // Reference: exempli-gratia
 // Edited by Xiao Lin
@@ -103,27 +104,13 @@ class Store extends Component {
         return (
             <div className="store-container">
                 <div className="search-container">
-                    <form action="">
-                        <input type="text" placeholder="Search store.." name="search"/>
-                        <button className="icon-button" type="submit"><img src={search_icon} className="icon" alt="search"/></button>
-                    </form>
+                    <Search placeholder="Search store ..." data={StoreData}/>
                 </div>
                 <div className="container">
                     <div className="store-info">
                         <div className="time">
                             <p>Last refresh time is</p>
                             <p>{this.state.readableNow}</p>
-                        </div>
-                        <div className="information-display">
-                            <h3>Store information display</h3>
-                            <div style={{background: '#40E0D0'}}>
-                                <blockquote>
-                                    <p>Store: {this.state.storeName}</p>
-                                    <p>Population density: {this.state.storeDensity}</p>
-                                    <p>Location: {this.state.storeAddress}</p>
-                                    <p>Rules: {this.state.storeInfo}</p>
-                                </blockquote>
-                            </div>
                         </div>
                         <button className="button" onClick={this.buttonClickedReRender}>Click to Re-Render</button>
                         <button className="button" onClick={this.buttonClickedRefreshStoreInfo}>Click to Refresh Store</button>

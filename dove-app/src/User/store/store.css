@@ -62,24 +62,6 @@
     background-color:#FFFFFF;
 }
 
-.icon-button{
-    float: none;
-    padding: 1px;
-    margin-top: 8px;
-    margin-right: 1px;
-    background: #ddd;
-    font-size: 1px;
-    border: none;
-    cursor: pointer;
-}
-
-input[type=text] {
-    padding: 10px;
-    margin-top: 16px;
-    font-size: 17px;
-    border: inset;
-}
-
 .search-container button:hover {
     background: #ccc;
 }
