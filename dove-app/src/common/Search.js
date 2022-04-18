@@ -11,7 +11,7 @@ function Search({placeholder, data}){
     const [info, setInfo] = useState(data);
 
     // exclude column list from filter
-    const excludeColumns = ["storeAddress"];
+    const excludeColumns = ["storeAddress", "storeDensity"];
 
     // handle change event of search input
     const handleChange = value => {
@@ -52,7 +52,7 @@ function Search({placeholder, data}){
             </div>
             <div className="box-container">
                 <h3>Store information display</h3>
-                {info.map((d, i) => {
+                {[info].map((d, i) => {
                     return <div key={i} className="box">
                         <blockquote>
                             <b>Store: </b>{d.storeName}<br />

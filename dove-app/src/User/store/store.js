@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import { getTime, getStoreInfo } from "../../util/APIUtils";
+import { getTime, getStoreInfo, getAllInfo } from "../../util/APIUtils";
 import LoadingIndicator from '../../common/LoadingIndicator';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './store.css';
 import Search from "../../common/Search";
-import StoreData from "../../data.json";
+// import StoreData from "../../data.json";
+import SearchIcon from "@material-ui/icons/Search";
 
 // Reference: exempli-gratia
 // Edited by Xiao Lin
@@ -20,6 +21,7 @@ class Store extends Component {
             storeDensity: null,
             storeAddress: null,
             storeInfo: null,
+            result: null
         };
         this.refreshTime = this.refreshTime.bind(this);
         this.refreshStoreInfo = this.refreshStoreInfo.bind(this);
@@ -62,9 +64,24 @@ class Store extends Component {
         });
     }
 
+    getInfo() {
+        getAllInfo().then(response => {
+            this.setState({
+                result: response.result
+            }, () => {console.log(this.state);});
+            Alert.success("All info refreshed!");
+        }).catch(error => {
+            this.setState({
+                loading: false
+            }, () => {console.log(this.state);});
+            Alert.error("Info NOT retrieved!");
+        });
+    }
+
     componentDidMount() {
         this.refreshTime();
         this.refreshStoreInfo();
+        this.getInfo();
         console.log("componentDidMount: state = %o", this.state);
     }
 
@@ -103,8 +120,8 @@ class Store extends Component {
         console.log("Render() -> state = %o",this.state);
         return (
             <div className="store-container">
-                <div className="search-container">
-                    <Search placeholder="Search store ..." data={StoreData}/>
+                <div className="search-container">;
+                    <Search placeholder="Search store ..." data={this.state.result}/>
                 </div>
                 <div className="container">
                     <div className="store-info">
