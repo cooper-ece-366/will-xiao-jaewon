@@ -122,8 +122,7 @@ class Store extends Component {
             <div className="store-container">
                 <div className="search-container">;
                     <Search placeholder="Search store ..." data={this.state.result}/>
-                </div>
-                <div className="container">
+                </d<div className="container">
                     <div className="store-info">
                         <div className="time">
                             <p>Last refresh time is</p>

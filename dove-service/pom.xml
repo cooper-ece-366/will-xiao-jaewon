@@ -185,6 +185,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.28</version>
         </dependency>
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>1.5</version>
+        </dependency>
         <!--<dependency>
             <groupId>edu.cooper.ece366.yahoofinance</groupId>
             <artifactId>api</artifactId>

@@ -30,6 +30,16 @@ public class ControllerApi {
     public String getStore() throws JsonProcessingException {
         ApiStore store = new ApiStore();
         String storeString = objectMapper.writeValueAsString(store);
+        LOGGER.info(String.format("storeString = %s",storeString));
         return(storeString);
+    }
+
+    @GetMapping(value = "/search/{stringToSearch}")
+    public String getSearch(@PathVariable String stringToSearch) throws JsonProcessingException {
+        LOGGER.info(String.format("stringToSearch = %s",stringToSearch));
+        ApiSearch search = new ApiSearch(stringToSearch);
+        String searchString = objectMapper.writeValueAsString(search);
+        LOGGER.info(String.format("searchString = %s",searchString));
+        return(searchString);
     }
 }

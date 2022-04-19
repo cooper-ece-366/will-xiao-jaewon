@@ -76,4 +76,5 @@ public class ApiSearch {
     public String getStoreInfo() {
         return(this.storeInfo);
     }
+
 }

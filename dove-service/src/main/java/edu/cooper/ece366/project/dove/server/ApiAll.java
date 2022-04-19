@@ -10,6 +10,7 @@ import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
+
 public class ApiAll {
     List<String> STORE_INFO_LIST = List.of(
             "NAMETEST1:POPTEST2:ADDTEST3:RULETEST4"

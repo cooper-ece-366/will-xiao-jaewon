@@ -90,4 +90,29 @@ export function getStoreInfo() {
         url: API_BASE_URL + "/api/store",
         method: 'GET'
     });
+
+}
+
+export function getAllInfo() {
+    /*
+    if(!localStorage.getItem(ACCESS_TOKEN)) {
+        return Promise.reject("No access token set.");
+    }
+    */
+    return request({
+        url: API_BASE_URL + "/api/all",
+        method: 'GET'
+    });
+}
+
+export function getSearchInfo(stringToSearch) {
+    /*
+    if(!localStorage.getItem(ACCESS_TOKEN)) {
+        return Promise.reject("No access token set.");
+    }
+    */
+    return request({
+        url: API_BASE_URL + "/api/search/" + stringToSearch,
+        method: 'GET'
+    });
 }
