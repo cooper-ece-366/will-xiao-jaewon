@@ -52,7 +52,14 @@ public class ApiSearch {
         }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
+        for (int i = 0; i < finalInfo.size(); i++){
+            String result = finalInfo.get(i);
+            String[] parts = result.split(":",4);
+            this.storeName = parts[0];
+            this.storeDensity = parts[1];
+            this.storeAddress = parts[2];
+            this.storeInfo = parts[3];
+        }
 //        int r = (int) (Math.random()*finalInfo.size());
 //        String q = finalInfo.get(r);
 //        //String p = STORE_NAME_LIST.get(r);
