@@ -40,7 +40,7 @@ public class ApiSearch {
         try{
             Connection myConn = DriverManager.getConnection(url, user, password);
             Statement myStmt = myConn.createStatement();
-            String sql = "SELECT * FROM javabase.stores WHERE CONCAT('name','population','address','rules') LIKE '%" +stringToSearch+ " %'";
+            String sql = "SELECT * FROM javabase.stores WHERE name = '" + stringToSearch + "'";
             ResultSet rs = myStmt.executeQuery(sql);
 
             while (rs.next()) {
@@ -52,22 +52,39 @@ public class ApiSearch {
         }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        for (int i = 0; i < finalInfo.size(); i++){
-            String result = finalInfo.get(i);
-            String[] parts = result.split(":",4);
+//        int i = 0;
+//        for (int i = 0; i < finalInfo.size(); i++){
+//            String result = finalInfo.get(i);
+//            String[] parts = result.split(":",4);
+//            this.storeName = parts[0];
+//            this.storeDensity = parts[1];
+//            this.storeAddress = parts[2];
+//            this.storeInfo = parts[3];
+//        }
+//        while(i < finalInfo.size()) {
+//            String result = finalInfo.get(i);
+//            String[] parts = result.split(":",4);
+//            this.storeName = parts[0];
+//            this.storeDensity = parts[1];
+//            this.storeAddress = parts[2];
+//            this.storeInfo = parts[3];
+//            i++;
+//        }
+//        int r = (int) (Math.random()*finalInfo.size());
+        if (finalInfo.size() > 1) {
+            String q = finalInfo.get(1);
+            //String p = STORE_NAME_LIST.get(r);
+            String[] parts = q.split(":", 4);
             this.storeName = parts[0];
             this.storeDensity = parts[1];
             this.storeAddress = parts[2];
             this.storeInfo = parts[3];
+        } else {
+            this.storeName = "Store name not found";
+            this.storeDensity = "N/A";
+            this.storeAddress = "N/A";
+            this.storeInfo = "N/A";
         }
-//        int r = (int) (Math.random()*finalInfo.size());
-//        String q = finalInfo.get(r);
-//        //String p = STORE_NAME_LIST.get(r);
-//        String[] parts = q.split(":", 4);
-//        this.storeName = parts[0];
-//        this.storeDensity = parts[1];
-//        this.storeAddress = parts[2];
-//        this.storeInfo = parts[3];
 
     }
 

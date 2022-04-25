@@ -35,6 +35,7 @@ public class ControllerApi {
     }
 
     @GetMapping(value = "/search/{stringToSearch}")
+    @ResponseBody
     public String getSearch(@PathVariable String stringToSearch) throws JsonProcessingException {
         LOGGER.info(String.format("stringToSearch = %s",stringToSearch));
         ApiSearch search = new ApiSearch(stringToSearch);
