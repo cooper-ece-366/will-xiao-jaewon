@@ -1,17 +1,42 @@
-package edu.cooper.ece366.project.dove.server;
-
+package edu.cooper.ece366.project.dove.server.model;
+/*
 import java.util.Collections;
 import java.util.List;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.*;
+*/
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class ApiStore { // edited by Will
-    //TODO: Change the hard-coded store info to SQL
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+// Reference: https://codebun.com/search-record-from-a-table-in-react-js-spring-boot-and-mysql/
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "store")
+public class Store { // edited by Will
     //Hard-coded store name and information
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
+    private String bookName;
 
+    private String authorName;
 
+    private long price;
+}
+/*
     List<String> STORE_INFO_LIST = List.of(
             "NAMETEST1:POPTEST2:ADDTEST3:RULETEST4"
             );
@@ -62,6 +87,7 @@ public class ApiStore { // edited by Will
         this.storeAddress = parts[2];
         this.storeInfo = parts[3];
     }
+
     public String getStoreName() {
         return(this.storeName);
     }
@@ -75,3 +101,4 @@ public class ApiStore { // edited by Will
         return(this.storeInfo);
     }
 }
+*/

@@ -1,30 +1,52 @@
 import React, {Component} from 'react';
-import { getTime, getStoreInfo } from "../../util/APIUtils";
+import { getTime } from "../../util/APIUtils";
 import LoadingIndicator from '../../common/LoadingIndicator';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
-import './store.css';
-import Search from "../../common/Search";
-import StoreData from "../../data.json";
+import './StoreList.css';
+import storeService from "../../services/storeService";
+/*
+import {
+    Card,
+    Table,
+    Image,
+    ButtonGroup,
+    Button,
+    InputGroup,
+    FormControl,
+} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faList,
+    faEdit,
+    faTrash,
+    faStepBackward,
+    faFastBackward,
+    faStepForward,
+    faFastForward,
+    faSearch,
+    faTimes,
+} from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import axios from "axios";
+*/
 
-// Reference: exempli-gratia
+// Reference1: exempli-gratia
+// Reference2: https://github.com/mightyjava/book-rest-api-reactjs
 // Edited by Xiao Lin
-class Store extends Component {
+class StoreList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             now: null,
             readableNow: null,
-            storeName: null,
-            storeDensity: null,
-            storeAddress: null,
-            storeInfo: null,
-        };
+            stores: []
+        }
         this.refreshTime = this.refreshTime.bind(this);
-        this.refreshStoreInfo = this.refreshStoreInfo.bind(this);
         this.buttonClickedRefreshStoreInfo = this.buttonClickedRefreshStoreInfo.bind(this);
         this.buttonClickedReRender = this.buttonClickedReRender.bind(this);
+
     }
 
     refreshTime() {
@@ -45,29 +67,14 @@ class Store extends Component {
         });
     }
 
-    refreshStoreInfo() {
-        getStoreInfo().then(response => {
-            this.setState({
-                storeName: response.storeName,
-                storeDensity: response.storeDensity,
-                storeAddress: response.storeAddress,
-                storeInfo: response.storeInfo
-            }, () => {console.log(this.state);});
-            Alert.success("Store info refreshed!");
-        }).catch(error => {
-                this.setState({
-                    loading: false
-                }, () => {console.log(this.state);});
-                Alert.error("Store info NOT retrieved!");
-        });
-    }
-
     componentDidMount() {
         this.refreshTime();
-        this.refreshStoreInfo();
+        storeService.getStore().then((Response)=>{
+            this.setState({stores:Response.data.conversations})
+        });
         console.log("componentDidMount: state = %o", this.state);
     }
-
+/*
     componentWillUnmount() {
         console.log("componentWillUnmount: state = %o", this.state);
     }
@@ -84,11 +91,11 @@ class Store extends Component {
         console.log("shouldComponentUpdate: state = %o", this.state);
         return(true);
     }
+*/
 
     buttonClickedRefreshStoreInfo() {
-        console.log('Store was refreshed!');
+        console.log('StoreList was refreshed!');
         this.refreshTime();
-        this.refreshStoreInfo();
         console.log(this.state.storeName);
     }
 
@@ -101,12 +108,37 @@ class Store extends Component {
             return <LoadingIndicator />
         }
         console.log("Render() -> state = %o",this.state);
+
         return (
             <div className="store-container">
-                <div className="search-container">
-                    <Search placeholder="Search store ..." data={StoreData}/>
+                <div className="list-container">
+                    <table className="table table-bordered border-info">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Store</th>
+                            <th>Address</th>
+                            <th>Density</th>
+                            <th>Rules</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            this.state.stores.map(
+                                stores =>
+                                    <tr key = {stores.id}>
+                                        <td>{stores.id}</td>
+                                        <td>{stores.storeName}</td>
+                                        <td>{stores.address}</td>
+                                        <td>{stores.density}</td>
+                                        <td>{stores.info}</td>
+                                    </tr>
+                            )
+                        }
+                        </tbody>
+                    </table>
                 </div>
-                <div className="container">
+                <div className="time-container">
                     <div className="store-info">
                         <div className="time">
                             <p>Last refresh time is</p>
@@ -122,4 +154,4 @@ class Store extends Component {
 }
 
 
-export default Store;
+export default StoreList;
