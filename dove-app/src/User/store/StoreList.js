@@ -6,6 +6,18 @@ import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './StoreList.css';
 import storeService from "../../services/storeService";
+import {
+    faList,
+    faEdit,
+    faTrash,
+    faStepBackward,
+    faFastBackward,
+    faStepForward,
+    faFastForward,
+    faSearch,
+    faTimes, faPlusSquare,
+} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 /*
 import {
     Card,
@@ -17,17 +29,6 @@ import {
     FormControl,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faList,
-    faEdit,
-    faTrash,
-    faStepBackward,
-    faFastBackward,
-    faStepForward,
-    faFastForward,
-    faSearch,
-    faTimes,
-} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import axios from "axios";
 */
@@ -35,13 +36,25 @@ import axios from "axios";
 // Reference1: exempli-gratia
 // Reference2: https://github.com/mightyjava/book-rest-api-reactjs
 // Edited by Xiao Lin
+
+//TODO: Remove the hard-coded data after connected to database
+const data = [
+    { id: 1, storeName: "Uniqlo", address: "546 Broadway", density: 0.64, info:"Mask required"},
+    { id: 2, storeName: "Meet Fresh", address: "37 Cooper Sq", density: 0.47, info:"Disinfect surfaces between visits"},
+    { id: 3, storeName: "Blick Art Materials", address: "1-5 Bond St", density: 0.22, info:"Mask required"},
+    { id: 4, storeName: "Wanpo Tea Shop", address: "37 E 8th St", density: 0.81, info:"Not specified"},
+    { id: 5, storeName: "Sunrise Mart", address: "4 Stuyvesant St", density: 0.67, info:"Safety dividers at checkout"},
+]
+
 class StoreList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             now: null,
             readableNow: null,
-            stores: []
+            stores: [],
+            currentPage:1,
+            recordPerPage:5,
         }
         this.refreshTime = this.refreshTime.bind(this);
         this.buttonClickedRefreshStoreInfo = this.buttonClickedRefreshStoreInfo.bind(this);
@@ -124,18 +137,38 @@ class StoreList extends Component {
                         </thead>
                         <tbody>
                         {
-                            this.state.stores.map(
-                                stores =>
-                                    <tr key = {stores.id}>
-                                        <td>{stores.id}</td>
-                                        <td>{stores.storeName}</td>
-                                        <td>{stores.address}</td>
-                                        <td>{stores.density}</td>
-                                        <td>{stores.info}</td>
+                            data.map(
+                                (val, key) =>
+                                    <tr key = {key}>
+                                        <td>{val.id}</td>
+                                        <td>{val.storeName}</td>
+                                        <td>{val.address}</td>
+                                        <td>{val.density}</td>
+                                        <td>{val.info}</td>
                                     </tr>
                             )
                         }
                         </tbody>
+                    </table>
+                    <table className="table">
+                        <div style={{float: 'left', fontFamily: 'monospace', color: '#0275d8', padding: '8px'}}>
+                            Page 1 of 1
+                        </div>
+                        <div style={{float: 'right'}}>
+                            <div className="clearfix"></div>
+                            <nav aria-label="Page navigation example">
+                                <ul className="pagination">
+                                    <li className="button"><a type="button" className="page-link"
+                                                                 ><FontAwesomeIcon icon={faFastBackward} /> First</a></li>
+                                    <li className="button"><a type="button" className="page-link"
+                                                                 ><FontAwesomeIcon icon={faStepBackward} /> Previous</a></li>
+                                    <li className="button"><a type="button" className="page-link"
+                                                                 ><FontAwesomeIcon icon={faStepForward} /> Next</a></li>
+                                    <li className="button"><a type="button" className="page-link"
+                                                                 ><FontAwesomeIcon icon={faFastForward} /> Last</a></li>
+                                </ul>
+                            </nav>
+                        </div>
                     </table>
                 </div>
                 <div className="time-container">
