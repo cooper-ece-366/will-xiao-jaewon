@@ -34,7 +34,7 @@ public class Store { // edited by Will
 
     private String info;
 
-    private Integer density;
+    private Float density;
 
     private String address;
 
@@ -51,7 +51,7 @@ public class Store { // edited by Will
         return id;
     }
 
-    public Integer getDensity () {
+    public Float getDensity () {
         return density;
     }
 

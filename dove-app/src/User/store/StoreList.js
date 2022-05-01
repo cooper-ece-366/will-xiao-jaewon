@@ -37,15 +37,6 @@ import axios from "axios";
 // Reference2: https://github.com/mightyjava/book-rest-api-reactjs
 // Edited by Xiao Lin
 
-//TODO: Remove the hard-coded data after connected to database
-const data = [
-    { id: 1, storeName: "Uniqlo", address: "546 Broadway", density: 0.64, info:"Mask required"},
-    { id: 2, storeName: "Meet Fresh", address: "37 Cooper Sq", density: 0.47, info:"Disinfect surfaces between visits"},
-    { id: 3, storeName: "Blick Art Materials", address: "1-5 Bond St", density: 0.22, info:"Mask required"},
-    { id: 4, storeName: "Wanpo Tea Shop", address: "37 E 8th St", density: 0.81, info:"Not specified"},
-    { id: 5, storeName: "Sunrise Mart", address: "4 Stuyvesant St", density: 0.67, info:"Safety dividers at checkout"},
-]
-
 class StoreList extends Component {
     constructor(props) {
         super(props);
@@ -83,7 +74,7 @@ class StoreList extends Component {
     componentDidMount() {
         this.refreshTime();
         storeService.getStore().then((Response)=>{
-            this.setState({stores:Response.data.conversations})
+            this.setState({stores:Response.data})
         });
         console.log("componentDidMount: state = %o", this.state);
     }
@@ -137,14 +128,14 @@ class StoreList extends Component {
                         </thead>
                         <tbody>
                         {
-                            data.map(
-                                (val, key) =>
-                                    <tr key = {key}>
-                                        <td>{val.id}</td>
-                                        <td>{val.storeName}</td>
-                                        <td>{val.address}</td>
-                                        <td>{val.density}</td>
-                                        <td>{val.info}</td>
+                            this.state.stores.map(
+                                stores =>
+                                    <tr key = {stores.id}>
+                                        <td>{stores.id}</td>
+                                        <td>{stores.name}</td>
+                                        <td>{stores.address}</td>
+                                        <td>{stores.density}</td>
+                                        <td>{stores.info}</td>
                                     </tr>
                             )
                         }

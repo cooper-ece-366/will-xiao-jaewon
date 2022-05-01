@@ -14,7 +14,7 @@ public interface StoreRepository extends JpaRepository<Store, Integer>{
 
     List<Store> findByNameContaining(String name);
 
-    List<Store> findByDensityLessThan(Integer density);
+    List<Store> findByDensityLessThan(Float density);
 
     @Override
     List<Store> findAll();

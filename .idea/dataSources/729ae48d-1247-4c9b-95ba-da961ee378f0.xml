@@ -1,28 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="javabase@localhost">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.32">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.38">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
-      <Grants>javabase|schema||java|localhost|ALTER|G
-javabase|schema||java|localhost|ALTER ROUTINE|G
-javabase|schema||java|localhost|CREATE|G
-javabase|schema||java|localhost|CREATE ROUTINE|G
-javabase|schema||java|localhost|CREATE TEMPORARY TABLES|G
-javabase|schema||java|localhost|CREATE VIEW|G
-javabase|schema||java|localhost|DELETE|G
-javabase|schema||java|localhost|DROP|G
-javabase|schema||java|localhost|EVENT|G
-javabase|schema||java|localhost|EXECUTE|G
-javabase|schema||java|localhost|INDEX|G
-javabase|schema||java|localhost|INSERT|G
-javabase|schema||java|localhost|LOCK TABLES|G
-javabase|schema||java|localhost|REFERENCES|G
-javabase|schema||java|localhost|SELECT|G
-javabase|schema||java|localhost|SHOW VIEW|G
-javabase|schema||java|localhost|TRIGGER|G
-javabase|schema||java|localhost|UPDATE|G</Grants>
+      <Grants>|root||java|localhost|ALTER|G
+|root||root|localhost|ALTER|G
+|root||java|localhost|ALTER ROUTINE|G
+|root||root|localhost|ALTER ROUTINE|G
+|root||java|localhost|APPLICATION_PASSWORD_ADMIN|G
+|root||root|localhost|APPLICATION_PASSWORD_ADMIN|G
+|root||java|localhost|AUDIT_ABORT_EXEMPT|G
+|root||mysql.infoschema|localhost|AUDIT_ABORT_EXEMPT|G
+|root||mysql.session|localhost|AUDIT_ABORT_EXEMPT|G
+|root||mysql.sys|localhost|AUDIT_ABORT_EXEMPT|G
+|root||root|localhost|AUDIT_ABORT_EXEMPT|G
+|root||java|localhost|AUDIT_ADMIN|G
+|root||root|localhost|AUDIT_ADMIN|G
+|root||java|localhost|AUTHENTICATION_POLICY_ADMIN|G
+|root||root|localhost|AUTHENTICATION_POLICY_ADMIN|G
+|root||java|localhost|BACKUP_ADMIN|G
+|root||mysql.session|localhost|BACKUP_ADMIN|G
+|root||root|localhost|BACKUP_ADMIN|G
+|root||java|localhost|BINLOG_ADMIN|G
+|root||root|localhost|BINLOG_ADMIN|G
+|root||java|localhost|BINLOG_ENCRYPTION_ADMIN|G
+|root||root|localhost|BINLOG_ENCRYPTION_ADMIN|G
+|root||java|localhost|CLONE_ADMIN|G
+|root||mysql.session|localhost|CLONE_ADMIN|G
+|root||root|localhost|CLONE_ADMIN|G
+|root||java|localhost|CONNECTION_ADMIN|G
+|root||mysql.session|localhost|CONNECTION_ADMIN|G
+|root||root|localhost|CONNECTION_ADMIN|G
+|root||java|localhost|CREATE|G
+|root||root|localhost|CREATE|G
+|root||java|localhost|CREATE ROLE|G
+|root||root|localhost|CREATE ROLE|G
+|root||java|localhost|CREATE ROUTINE|G
+|root||root|localhost|CREATE ROUTINE|G
+|root||java|localhost|CREATE TABLESPACE|G
+|root||root|localhost|CREATE TABLESPACE|G
+|root||java|localhost|CREATE TEMPORARY TABLES|G
+|root||root|localhost|CREATE TEMPORARY TABLES|G
+|root||java|localhost|CREATE USER|G
+|root||root|localhost|CREATE USER|G
+|root||java|localhost|CREATE VIEW|G
+|root||root|localhost|CREATE VIEW|G
+|root||java|localhost|DELETE|G
+|root||root|localhost|DELETE|G
+|root||java|localhost|DROP|G
+|root||root|localhost|DROP|G
+|root||java|localhost|DROP ROLE|G
+|root||root|localhost|DROP ROLE|G
+|root||java|localhost|ENCRYPTION_KEY_ADMIN|G
+|root||root|localhost|ENCRYPTION_KEY_ADMIN|G
+|root||java|localhost|EVENT|G
+|root||root|localhost|EVENT|G
+|root||java|localhost|EXECUTE|G
+|root||root|localhost|EXECUTE|G
+|root||java|localhost|FILE|G
+|root||root|localhost|FILE|G
+|root||java|localhost|FLUSH_OPTIMIZER_COSTS|G
+|root||root|localhost|FLUSH_OPTIMIZER_COSTS|G
+|root||java|localhost|FLUSH_STATUS|G
+|root||root|localhost|FLUSH_STATUS|G
+|root||java|localhost|FLUSH_TABLES|G
+|root||root|localhost|FLUSH_TABLES|G
+|root||java|localhost|FLUSH_USER_RESOURCES|G
+|root||root|localhost|FLUSH_USER_RESOURCES|G
+|root||java|localhost|GROUP_REPLICATION_ADMIN|G
+|root||root|localhost|GROUP_REPLICATION_ADMIN|G
+|root||java|localhost|GROUP_REPLICATION_STREAM|G
+|root||root|localhost|GROUP_REPLICATION_STREAM|G
+|root||java|localhost|INDEX|G
+|root||root|localhost|INDEX|G
+|root||java|localhost|INNODB_REDO_LOG_ARCHIVE|G
+|root||root|localhost|INNODB_REDO_LOG_ARCHIVE|G
+|root||java|localhost|INNODB_REDO_LOG_ENABLE|G
+|root||root|localhost|INNODB_REDO_LOG_ENABLE|G
+|root||java|localhost|INSERT|G
+|root||root|localhost|INSERT|G
+|root||java|localhost|LOCK TABLES|G
+|root||root|localhost|LOCK TABLES|G
+|root||java|localhost|PASSWORDLESS_USER_ADMIN|G
+|root||root|localhost|PASSWORDLESS_USER_ADMIN|G
+|root||java|localhost|PERSIST_RO_VARIABLES_ADMIN|G
+|root||mysql.session|localhost|PERSIST_RO_VARIABLES_ADMIN|G
+|root||root|localhost|PERSIST_RO_VARIABLES_ADMIN|G
+|root||java|localhost|PROCESS|G
+|root||root|localhost|PROCESS|G
+|root||java|localhost|REFERENCES|G
+|root||root|localhost|REFERENCES|G
+|root||java|localhost|RELOAD|G
+|root||root|localhost|RELOAD|G
+|root||java|localhost|REPLICATION CLIENT|G
+|root||root|localhost|REPLICATION CLIENT|G
+|root||java|localhost|REPLICATION SLAVE|G
+|root||root|localhost|REPLICATION SLAVE|G
+|root||java|localhost|REPLICATION_APPLIER|G
+|root||root|localhost|REPLICATION_APPLIER|G
+|root||java|localhost|REPLICATION_SLAVE_ADMIN|G
+|root||root|localhost|REPLICATION_SLAVE_ADMIN|G
+|root||java|localhost|RESOURCE_GROUP_ADMIN|G
+|root||root|localhost|RESOURCE_GROUP_ADMIN|G
+|root||java|localhost|RESOURCE_GROUP_USER|G
+|root||root|localhost|RESOURCE_GROUP_USER|G
+|root||java|localhost|ROLE_ADMIN|G
+|root||root|localhost|ROLE_ADMIN|G
+|root||java|localhost|SELECT|G
+|root||mysql.infoschema|localhost|SELECT|G
+|root||root|localhost|SELECT|G
+|root||java|localhost|SERVICE_CONNECTION_ADMIN|G
+|root||root|localhost|SERVICE_CONNECTION_ADMIN|G
+|root||java|localhost|SESSION_VARIABLES_ADMIN|G
+|root||mysql.session|localhost|SESSION_VARIABLES_ADMIN|G
+|root||root|localhost|SESSION_VARIABLES_ADMIN|G
+|root||java|localhost|SET_USER_ID|G
+|root||root|localhost|SET_USER_ID|G
+|root||java|localhost|SHOW DATABASES|G
+|root||root|localhost|SHOW DATABASES|G
+|root||java|localhost|SHOW VIEW|G
+|root||root|localhost|SHOW VIEW|G
+|root||java|localhost|SHOW_ROUTINE|G
+|root||root|localhost|SHOW_ROUTINE|G
+|root||java|localhost|SHUTDOWN|G
+|root||mysql.session|localhost|SHUTDOWN|G
+|root||root|localhost|SHUTDOWN|G
+|root||java|localhost|SUPER|G
+|root||mysql.session|localhost|SUPER|G
+|root||root|localhost|SUPER|G
+|root||java|localhost|SYSTEM_USER|G
+|root||mysql.infoschema|localhost|SYSTEM_USER|G
+|root||mysql.session|localhost|SYSTEM_USER|G
+|root||mysql.sys|localhost|SYSTEM_USER|G
+|root||root|localhost|SYSTEM_USER|G
+|root||java|localhost|SYSTEM_VARIABLES_ADMIN|G
+|root||mysql.session|localhost|SYSTEM_VARIABLES_ADMIN|G
+|root||root|localhost|SYSTEM_VARIABLES_ADMIN|G
+|root||java|localhost|TABLE_ENCRYPTION_ADMIN|G
+|root||root|localhost|TABLE_ENCRYPTION_ADMIN|G
+|root||java|localhost|TRIGGER|G
+|root||root|localhost|TRIGGER|G
+|root||java|localhost|UPDATE|G
+|root||root|localhost|UPDATE|G
+|root||java|localhost|XA_RECOVER_ADMIN|G
+|root||root|localhost|XA_RECOVER_ADMIN|G
+|root||java|localhost|grant option|G
+|root||root|localhost|grant option|G
+%|schema||java|localhost|ALTER|G
+%|schema||java|localhost|ALTER ROUTINE|G
+%|schema||java|localhost|CREATE|G
+%|schema||java|localhost|CREATE ROUTINE|G
+%|schema||java|localhost|CREATE TEMPORARY TABLES|G
+%|schema||java|localhost|CREATE VIEW|G
+%|schema||java|localhost|DELETE|G
+%|schema||java|localhost|DROP|G
+%|schema||java|localhost|EVENT|G
+%|schema||java|localhost|EXECUTE|G
+%|schema||java|localhost|INDEX|G
+%|schema||java|localhost|INSERT|G
+%|schema||java|localhost|LOCK TABLES|G
+%|schema||java|localhost|REFERENCES|G
+%|schema||java|localhost|SELECT|G
+%|schema||java|localhost|SHOW VIEW|G
+%|schema||java|localhost|TRIGGER|G
+%|schema||java|localhost|UPDATE|G
+%|schema||java|localhost|grant option|G
+performance_schema|schema||mysql.session|localhost|SELECT|G
+sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <ServerVersion>8.0.28</ServerVersion>
     </root>
     <collation id="2" parent="1" name="armscii8_bin">
@@ -882,53 +1028,82 @@ javabase|schema||java|localhost|UPDATE|G</Grants>
     <collation id="273" parent="1" name="utf8mb4_zh_0900_as_cs">
       <Charset>utf8mb4</Charset>
     </collation>
-    <schema id="274" parent="1" name="information_schema">
+    <schema id="274" parent="1" name="borsa">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="275" parent="1" name="dove">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="276" parent="1" name="information_schema">
       <CollationName>utf8_general_ci</CollationName>
     </schema>
-    <schema id="275" parent="1" name="javabase">
+    <schema id="277" parent="1" name="javabase">
       <Current>1</Current>
-      <CollationName>utf8_unicode_ci</CollationName>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <user id="276" parent="1" name="java">
+    <schema id="278" parent="1" name="mysql">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="279" parent="1" name="performance_schema">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="280" parent="1" name="social_login">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="281" parent="1" name="store">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="282" parent="1" name="stores">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="283" parent="1" name="sys">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <user id="284" parent="1" name="java">
       <Host>localhost</Host>
     </user>
-    <table id="277" parent="275" name="hibernate_sequence">
+    <user id="285" parent="1" name="mysql.infoschema">
+      <CanLogin>0</CanLogin>
+      <Host>localhost</Host>
+      <Plugin>caching_sha2_password</Plugin>
+    </user>
+    <user id="286" parent="1" name="mysql.session">
+      <CanLogin>0</CanLogin>
+      <Host>localhost</Host>
+      <Plugin>caching_sha2_password</Plugin>
+    </user>
+    <user id="287" parent="1" name="mysql.sys">
+      <CanLogin>0</CanLogin>
+      <Host>localhost</Host>
+      <Plugin>caching_sha2_password</Plugin>
+    </user>
+    <user id="288" parent="1" name="root">
+      <Host>localhost</Host>
+      <Plugin>caching_sha2_password</Plugin>
+    </user>
+    <table id="289" parent="277" name="stores">
       <Engine>InnoDB</Engine>
-      <CollationName>utf8_unicode_ci</CollationName>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="278" parent="275" name="stores">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8_unicode_ci</CollationName>
-    </table>
-    <column id="279" parent="277" name="next_val">
-      <DataType>bigint|0s</DataType>
-      <Position>1</Position>
-    </column>
-    <column id="280" parent="278" name="id">
+    <column id="290" parent="289" name="id">
       <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="281" parent="278" name="address">
-      <DataType>varchar(255)|0s</DataType>
+    <column id="291" parent="289" name="name">
+      <DataType>varchar(50)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="282" parent="278" name="density">
-      <DataType>int|0s</DataType>
+    <column id="292" parent="289" name="address">
+      <DataType>varchar(50)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="283" parent="278" name="info">
-      <DataType>varchar(255)|0s</DataType>
+    <column id="293" parent="289" name="info">
+      <DataType>varchar(50)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="284" parent="278" name="name">
-      <DataType>varchar(255)|0s</DataType>
+    <column id="294" parent="289" name="density">
+      <DataType>float|0s</DataType>
       <Position>5</Position>
     </column>
-    <key id="285" parent="278" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-    </key>
   </database-model>
 </dataSource>
