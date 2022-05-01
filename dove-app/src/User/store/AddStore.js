@@ -44,7 +44,7 @@ class AddStore extends Component {
                 Alert.success("New store info added!");
             } ,(error) =>{
                 console.log(error);
-                Alert.error("Operation failed");
+                Alert.error("Operation failed!");
             }
         );
     }

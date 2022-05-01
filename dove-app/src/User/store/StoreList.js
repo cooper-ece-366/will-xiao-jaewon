@@ -47,12 +47,43 @@ class StoreList extends Component {
             stores: [],
             currentPage:1,
             recordPerPage:5,
-            search:''
+            search: '',
+            id: ''
         }
         this.refreshTime = this.refreshTime.bind(this);
         this.buttonClickedRefreshStoreInfo = this.buttonClickedRefreshStoreInfo.bind(this);
         this.buttonClickedReRender = this.buttonClickedReRender.bind(this);
     }
+
+    componentDidMount() {
+        this.refreshTime();
+        this.getStoresByPagination(this.state.currentPage);
+        /*
+        storeService.getStore().then((Response)=>{
+            this.setState({stores:Response.data})
+        });
+        console.log("componentDidMount: state = %o", this.state);
+         */
+    }
+
+    /*
+    componentWillUnmount() {
+        console.log("componentWillUnmount: state = %o", this.state);
+    }
+
+    componentDidUpdate() {
+        console.log("componentDidUpdate: state = %o", this.state);
+    }
+
+    componentWillUpdate() {
+        console.log("componentWillUpdate: state = %o", this.state);
+    }
+
+    shouldComponentUpdate() {
+        console.log("shouldComponentUpdate: state = %o", this.state);
+        return(true);
+    }
+*/
 
     refreshTime() {
         getTime()
@@ -70,17 +101,6 @@ class StoreList extends Component {
             }, () => {console.log(this.state);});
             return;
         });
-    }
-
-    componentDidMount() {
-        this.refreshTime();
-        this.getStoresByPagination(this.state.currentPage);
-        /*
-        storeService.getStore().then((Response)=>{
-            this.setState({stores:Response.data})
-        });
-        console.log("componentDidMount: state = %o", this.state);
-         */
     }
 
     getStoresByPagination(currentPage){
@@ -140,28 +160,25 @@ class StoreList extends Component {
         });
     };
 
-    resetStore = (currentPage)=>{
+    resetSearch = (currentPage) => {
         this.setState({"search":''});
         this.getStoresByPagination(this.state.currentPage);
     };
-/*
-    componentWillUnmount() {
-        console.log("componentWillUnmount: state = %o", this.state);
-    }
 
-    componentDidUpdate() {
-        console.log("componentDidUpdate: state = %o", this.state);
-    }
-
-    componentWillUpdate() {
-        console.log("componentWillUpdate: state = %o", this.state);
-    }
-
-    shouldComponentUpdate() {
-        console.log("shouldComponentUpdate: state = %o", this.state);
-        return(true);
-    }
-*/
+    deleteStore = (id) => {
+        storeService.delete().then(
+            (response) => {
+                console.log(response);
+                Alert.success("Store successfully deleted!");
+                this.setState({
+                    stores: this.state.stores.filter(store => store.id !== id)
+                });
+            }, (error) => {
+                console.log(error);
+                Alert.error("Operation failed!");
+            }
+        );
+    };
 
     buttonClickedRefreshStoreInfo() {
         console.log('StoreList was refreshed!');
@@ -182,8 +199,8 @@ class StoreList extends Component {
         const {stores, currentPage, totalPages, recordPerPage, search} = this.state;
         return (
             <div className="store-container">
-                <h1 className="text-center mt-2 ">Store List</h1>
-                <div className="container mt-2">
+                <h1>Store List</h1>
+                <div className="container">
                     <div className="form-group mb-2">
                         <input type="text" className="form-control" name="search" size="50"
                                placeholder="Search stores ..." autoComplete="off" value={search} onChange={this.searchInput}/>
@@ -191,7 +208,7 @@ class StoreList extends Component {
                                 onClick={this.searchStore}><FontAwesomeIcon icon={faSearch} /> Search
                         </button>
                         <button type="reset" className="btn btn-secondary text-center ml-5"
-                                style={{marginLeft: '10px'}} onClick={this.resetStore}> <FontAwesomeIcon icon={faTimes} /> Clear
+                                style={{marginLeft: '10px'}} onClick={this.resetSearch}> <FontAwesomeIcon icon={faTimes} /> Clear
                         </button>
                     </div>
                 </div>
@@ -204,6 +221,7 @@ class StoreList extends Component {
                             <th>Address</th>
                             <th>Density</th>
                             <th>Rules</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -217,6 +235,8 @@ class StoreList extends Component {
                                         <td>{stores.address}</td>
                                         <td>{stores.density}</td>
                                         <td>{stores.info}</td>
+                                        <td><button className="btn btn-outline-danger" onClick={() => { this.deleteStore(stores.id) }}>
+                                            <FontAwesomeIcon icon={faTrash} /> Delete</button></td>
                                     </tr>
                                 )
                             )
@@ -251,7 +271,7 @@ class StoreList extends Component {
                             <p>{this.state.readableNow}</p>
                         </div>
                         <button className="button" onClick={this.buttonClickedReRender}>Click to Re-Render</button>
-                        <button className="button" onClick={this.buttonClickedRefreshStoreInfo}>Click to Refresh Store</button>
+                        <button className="button" onClick={this.buttonClickedRefreshStoreInfo}>Click to Refresh Store List</button>
                     </div>
                 </div>
             </div>
