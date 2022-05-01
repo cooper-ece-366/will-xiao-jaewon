@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b64d66a8-7a71-49d0-98ee-7979aa771c4a" name="Changes" comment="Connected the frontend to the backend to retrieve data from the database">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/729ae48d-1247-4c9b-95ba-da961ee378f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/729ae48d-1247-4c9b-95ba-da961ee378f0.xml" afterDir="false" />
+    <list default="true" id="b64d66a8-7a71-49d0-98ee-7979aa771c4a" name="Changes" comment="Created a storeList pagination prototype (Need backend implementation)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dove-app/src/User/store/StoreList.js" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/src/User/store/StoreList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-app/src/const/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/src/const/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/model/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/model/Store.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/repository/StoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/repository/StoreRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,8 +88,16 @@
       <option name="presentableId" value="Default" />
       <updated>1651393728187</updated>
       <workItem from="1651393734262" duration="58000" />
-      <workItem from="1651429220564" duration="3596000" />
+      <workItem from="1651429220564" duration="6752000" />
     </task>
+    <task id="LOCAL-00001" summary="Connected the frontend to the backend to retrieve data from the database">
+      <created>1651432853771</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1651432853771</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +116,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Connected the frontend to the backend to retrieve data from the database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Connected the frontend to the backend to retrieve data from the database" />
+    <MESSAGE value="Created a storeList pagination prototype (Need backend implementation)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a storeList pagination prototype (Need backend implementation)" />
   </component>
 </project>
