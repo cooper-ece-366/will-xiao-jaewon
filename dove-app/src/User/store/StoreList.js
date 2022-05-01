@@ -31,9 +31,6 @@ import {
     InputGroup,
     FormControl,
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
-import axios from "axios";
 */
 
 // Reference1: exempli-gratia
@@ -50,11 +47,11 @@ class StoreList extends Component {
             stores: [],
             currentPage:1,
             recordPerPage:5,
+            search:''
         }
         this.refreshTime = this.refreshTime.bind(this);
         this.buttonClickedRefreshStoreInfo = this.buttonClickedRefreshStoreInfo.bind(this);
         this.buttonClickedReRender = this.buttonClickedReRender.bind(this);
-
     }
 
     refreshTime() {
@@ -88,7 +85,7 @@ class StoreList extends Component {
 
     getStoresByPagination(currentPage){
         currentPage=currentPage-1;
-        axios.get("http://localhost:8080/stores?page="+currentPage+"&size="+this.state.recordPerPage)
+        axios.get("http://localhost:8080/api/stores?page="+currentPage+"&size="+this.state.recordPerPage)
             .then(response => response.data).then((data) =>{
             this.setState({books:data.content,
                 totalPages:data.totalPages,
@@ -124,6 +121,29 @@ class StoreList extends Component {
         }
     };
 
+    searchInput = (event) => {
+        this.setState({
+            //assigning value to event target
+            [event.target.name]:event.target.value,
+        });
+    };
+
+    searchStore = (currentPage) => {
+        currentPage=currentPage-1;
+        axios.get("http://localhost:8080/api/stores?page="+this.state.search+"?page="+currentPage+"&size="+this.state.recordPerPage)
+            .then(response => response.data).then((data) =>{
+            this.setState({books:data.content,
+                totalPages:data.totalPages,
+                totalElements: data.totalElements,
+                currentPage: data.number+1
+            });
+        });
+    };
+
+    resetStore = (currentPage)=>{
+        this.setState({"search":''});
+        this.getStoresByPagination(this.state.currentPage);
+    };
 /*
     componentWillUnmount() {
         console.log("componentWillUnmount: state = %o", this.state);
@@ -159,9 +179,22 @@ class StoreList extends Component {
         }
         console.log("Render() -> state = %o",this.state);
 
-        const {stores, currentPage, totalPages, recordPerPage} = this.state;
+        const {stores, currentPage, totalPages, recordPerPage, search} = this.state;
         return (
             <div className="store-container">
+                <h1 className="text-center mt-2 ">Store List</h1>
+                <div className="container mt-2">
+                    <div className="form-group mb-2">
+                        <input type="text" className="form-control" name="search" size="50"
+                               placeholder="Search stores ..." autoComplete="off" value={search} onChange={this.searchInput}/>
+                        <button type="button" name="search" className="btn btn-info my-2 text-center mr-2"
+                                onClick={this.searchStore}><FontAwesomeIcon icon={faSearch} /> Search
+                        </button>
+                        <button type="reset" className="btn btn-secondary text-center ml-5"
+                                style={{marginLeft: '10px'}} onClick={this.resetStore}> <FontAwesomeIcon icon={faTimes} /> Clear
+                        </button>
+                    </div>
+                </div>
                 <div className="list-container">
                     <table className="table table-bordered border-info">
                         <thead>
@@ -175,7 +208,7 @@ class StoreList extends Component {
                         </thead>
                         <tbody>
                         {stores.length===0?
-                            <tr align="center"><td colSpan="5">No Record Found</td></tr>:
+                            <tr align="center"><td colSpan="5">No Record Found in Database</td></tr>:
                             stores.map(
                                 (books,index) =>(
                                     <tr key = {stores.id}>
@@ -198,14 +231,14 @@ class StoreList extends Component {
                             <div className="clearfix"></div>
                             <nav aria-label="Page navigation example">
                                 <ul className="pagination">
-                                    <li className="button"><a type="button" className="page-link" disabled={currentPage===1?true:false} onClick={this.showPrevPage}
-                                                                 ><FontAwesomeIcon icon={faFastBackward} /> First</a></li>
-                                    <li className="button"><a type="button" className="page-link" disabled={currentPage===1?true:false } onClick={this.showFirstPage}
-                                                                 ><FontAwesomeIcon icon={faStepBackward} /> Previous</a></li>
-                                    <li className="button"><a type="button" className="page-link" disabled={currentPage===totalPages?true:false } onClick={this.showNextPage}
-                                                                 ><FontAwesomeIcon icon={faStepForward} /> Next</a></li>
-                                    <li className="button"><a type="button" className="page-link" disabled={currentPage===totalPages?true:false} onClick={this.showLastPage}
-                                                                 ><FontAwesomeIcon icon={faFastForward} /> Last</a></li>
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage===1?true:false} onClick={this.showPrevPage}
+                                                                 ><FontAwesomeIcon icon={faFastBackward} /> First</Button></li>
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage===1?true:false } onClick={this.showFirstPage}
+                                                                 ><FontAwesomeIcon icon={faStepBackward} /> Previous</Button></li>
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage===totalPages?true:false } onClick={this.showNextPage}
+                                                                 ><FontAwesomeIcon icon={faStepForward} /> Next</Button></li>
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage===totalPages?true:false} onClick={this.showLastPage}
+                                                                 ><FontAwesomeIcon icon={faFastForward} /> Last</Button></li>
                                 </ul>
                             </nav>
                         </div>
