@@ -2,6 +2,7 @@ package edu.cooper.ece366.project.dove.server;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.cooper.ece366.project.dove.server.model.Store;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -28,7 +29,7 @@ public class ControllerApi {
 
     @GetMapping("/store")
     public String getStore() throws JsonProcessingException {
-        ApiStore store = new ApiStore();
+        Store store = new Store();
         String storeString = objectMapper.writeValueAsString(store);
         return(storeString);
     }

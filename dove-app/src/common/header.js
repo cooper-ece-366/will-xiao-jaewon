@@ -21,10 +21,10 @@ class AppHeader extends Component {
                         <nav className="app-nav">
                             <ul>
                                 <li>
-                                    <NavLink to="/map">Map</NavLink>
+                                    <NavLink to="/add">Add Store</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/store">Store</NavLink>
+                                    <NavLink to="/store">Store List</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to="/profile">Profile</NavLink>

@@ -7,7 +7,8 @@ import AppHeader from "../common/header";
 import Home from '../home/Home';
 import NotFound from '../common/NotFound';
 import {Route, Switch} from "react-router-dom";
-import Store from "../User/store/store";
+import AddStore from "../User/store/AddStore";
+import StoreList from "../User/store/StoreList";
 import LoadingIndicator from "../common/LoadingIndicator";
 
 // Edited by Xiao Lin
@@ -35,7 +36,8 @@ class App extends Component {
                 <div className="app-body">
                     <Switch>
                         <Route exact path="/" component={Home}/>
-                        <Route exact path="/store" component={Store}/>
+                        <Route exact path="/add"><AddStore/></Route>
+                        <Route exact path="/store"><StoreList/></Route>
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
@@ -52,7 +54,7 @@ function App(){
     const [currentTime, setCurrentTime] = useState(Date.now());
     const [currentReadableTime, setCurrentReadableTime] = useState('0');
     const [currentVersionString, setCurrentVersionString] = useState('<null>');
-    const [storeName, setStoreName] = useState('Store xyz');
+    const [storeName, setStoreName] = useState('StoreList xyz');
     const [storeDensity, setStoreDensity] = useState('24 people in store');
     const [storeAddress, setStoreAddress] = useState('41 Cooper Square');
     const [storeInfo, setStoreInfo] = useState('Mask required');
@@ -132,7 +134,7 @@ function App(){
             <div className="app-body">
                 <Routes>
                     <Route exact path="/" caseSensitive={false} element={<Home />}/>
-                    <Route exact path="/store" caseSensitive={false} element={<Store />}/>
+                    <Route exact path="/store" caseSensitive={false} element={<StoreList />}/>
                     <Route caseSensitive={false} element={<notFound />}/>
                 </Routes>
             </div>

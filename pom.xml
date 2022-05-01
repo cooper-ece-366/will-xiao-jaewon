@@ -165,6 +165,11 @@
 				<version>${lombok.version}</version>
 				<scope>provided</scope>
 			</dependency>
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>javax.persistence-api</artifactId>
+				<version>2.2</version>
+			</dependency>
 			<!--
                         <dependency>
                             <groupId>org.apache.commons</groupId>
@@ -412,6 +417,26 @@
 					<groupId>ch.qos.logback</groupId>
 					<artifactId>logback-classic</artifactId>
 					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>commons-dbutils</groupId>
+					<artifactId>commons-dbutils</artifactId>
+					<version>1.5</version>
+				</dependency>
+<!--				<dependency>-->
+<!--					<groupId>com.google.code.gson</groupId>-->
+<!--					<artifactId>gson</artifactId>-->
+<!--					<version>2.5</version>-->
+<!--				</dependency>-->
+				<dependency>
+					<groupId>mysql</groupId>
+					<artifactId>mysql-connector-java</artifactId>
+					<version>8.0.28</version>
+				</dependency>
+				<dependency>
+					<groupId>javax.persistence</groupId>
+					<artifactId>javax.persistence-api</artifactId>
+					<version>2.2</version>
 				</dependency>
 				<dependency>
 					<groupId>org.slf4j</groupId>
