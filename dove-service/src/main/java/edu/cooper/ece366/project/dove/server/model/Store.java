@@ -23,19 +23,43 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "store")
+@Table(name = "stores")
 public class Store { // edited by Will
     //Hard-coded store name and information
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Integer id;
 
-    private String bookName;
+    private String name;
 
-    private String authorName;
+    private String info;
 
-    private long price;
+    private Integer density;
+
+    private String address;
+
+    public String getName () {
+        return name;
+    }
+
+    public String getAddress () {
+        return address;
+
+    }
+
+    public Integer getId () {
+        return id;
+    }
+
+    public Integer getDensity () {
+        return density;
+    }
+
+    public String getInfo () {
+        return info;
+    }
 }
+
 /*
     List<String> STORE_INFO_LIST = List.of(
             "NAMETEST1:POPTEST2:ADDTEST3:RULETEST4"
