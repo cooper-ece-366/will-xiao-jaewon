@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import {THE_APP_NAME} from "../const";
 import './header.css';
 import project_dove_logo from "../project-dove-logo.jpg";
+import Login from "./login";
 
 //Edited by Xiao Lin
 //TODO: Need edits after implementing login
@@ -30,7 +31,7 @@ class AppHeader extends Component {
                                     <NavLink to="/profile">Profile</NavLink>
                                 </li>
                                 <li>
-                                    <a>Logout</a>
+                                    <Login />
                                 </li>
                                 <li>
                                     <a
