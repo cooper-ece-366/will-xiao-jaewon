@@ -105,9 +105,9 @@ class StoreList extends Component {
 
     getStoresByPagination(currentPage){
         currentPage=currentPage-1;
-        axios.get("http://localhost:8080/api/stores?page="+currentPage+"&size="+this.state.recordPerPage)
+        axios.get("http://localhost:8080/store/?page="+currentPage+"&size="+this.state.recordPerPage)
             .then(response => response.data).then((data) =>{
-            this.setState({books:data.content,
+            this.setState({stores:data.content,
                 totalPages:data.totalPages,
                 totalElements: data.totalElements,
                 currentPage: data.number+1
@@ -150,9 +150,9 @@ class StoreList extends Component {
 
     searchStore = (currentPage) => {
         currentPage=currentPage-1;
-        axios.get("http://localhost:8080/api/stores?page="+this.state.search+"?page="+currentPage+"&size="+this.state.recordPerPage)
+        axios.get("http://localhost:8080/store/"+this.state.search+"?page="+currentPage+"&size="+this.state.recordPerPage)
             .then(response => response.data).then((data) =>{
-            this.setState({books:data.content,
+            this.setState({stores:data.content,
                 totalPages:data.totalPages,
                 totalElements: data.totalElements,
                 currentPage: data.number+1
@@ -228,7 +228,7 @@ class StoreList extends Component {
                         {stores.length===0?
                             <tr align="center"><td colSpan="5">No Record Found in Database</td></tr>:
                             stores.map(
-                                (books,index) =>(
+                                (stores,index) =>(
                                     <tr key = {stores.id}>
                                         <td>{(recordPerPage*(currentPage-1))+index+1}</td>
                                         <td>{stores.name}</td>

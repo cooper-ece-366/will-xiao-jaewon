@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b64d66a8-7a71-49d0-98ee-7979aa771c4a" name="Changes" comment="Created a storeList delete action prototype (Need backend implementation)">
-      <change afterPath="$PROJECT_DIR$/dove-app/src/User/store/UpdateStore.js" afterDir="false" />
+    <list default="true" id="b64d66a8-7a71-49d0-98ee-7979aa771c4a" name="Changes" comment="Created a storeList search bar prototype (Need backend implementation)">
+      <change afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services/Services.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/729ae48d-1247-4c9b-95ba-da961ee378f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/729ae48d-1247-4c9b-95ba-da961ee378f0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-app/src/User/store/AddStore.css" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/src/User/store/AddStore.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-app/src/User/store/AddStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/src/User/store/AddStore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dove-app/src/User/store/StoreList.js" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/src/User/store/StoreList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-app/src/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/src/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/controller/StoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/controller/StoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/repository/StoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/repository/StoreRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +21,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -33,6 +32,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -58,25 +65,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;database.output.results&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;cf1e8c14e54505f60aa10ceb8d5d8ab3&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
-    ]
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
   <component name="RecentsManager">
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="" />
@@ -84,9 +80,9 @@
   </component>
   <component name="RunManager">
     <configuration name="RestApiServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <option name="ACTIVE_PROFILES" />
       <module name="server" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="edu.cooper.ece366.project.dove.server.RestApiServer" />
+      <option name="ACTIVE_PROFILES" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -101,9 +97,9 @@
       <option name="presentableId" value="Default" />
       <updated>1651393728187</updated>
       <workItem from="1651393734262" duration="58000" />
-      <workItem from="1651429220564" duration="13093000" />
-      <workItem from="1651447540523" duration="7183000" />
-      <workItem from="1651466859795" duration="3488000" />
+      <workItem from="1651429220564" duration="12400000" />
+      <workItem from="1651460312498" duration="5119000" />
+      <workItem from="1651467214120" duration="4186000" />
     </task>
     <task id="LOCAL-00001" summary="Connected the frontend to the backend to retrieve data from the database">
       <created>1651432853771</created>
@@ -126,14 +122,7 @@
       <option name="project" value="LOCAL" />
       <updated>1651439568606</updated>
     </task>
-    <task id="LOCAL-00004" summary="Created a storeList delete action prototype (Need backend implementation)">
-      <created>1651441810243</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1651441810243</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +143,6 @@
     <MESSAGE value="Connected the frontend to the backend to retrieve data from the database" />
     <MESSAGE value="Created a storeList pagination prototype (Need backend implementation)" />
     <MESSAGE value="Created a storeList search bar prototype (Need backend implementation)" />
-    <MESSAGE value="Created a storeList delete action prototype (Need backend implementation)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a storeList delete action prototype (Need backend implementation)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a storeList search bar prototype (Need backend implementation)" />
   </component>
 </project>
