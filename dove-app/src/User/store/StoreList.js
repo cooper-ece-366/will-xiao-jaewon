@@ -17,7 +17,7 @@ import {
     faStepForward,
     faFastForward,
     faSearch,
-    faTimes, faPlusSquare,
+    faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
@@ -237,6 +237,7 @@ class StoreList extends Component {
                                         <td>{stores.info}</td>
                                         <td><button className="btn btn-outline-danger" onClick={() => { this.deleteStore(stores.id) }}>
                                             <FontAwesomeIcon icon={faTrash} /> Delete</button></td>
+                                        <Link to={`/update-stores/${books.id}`} className="btn btn-outline-dark">Edit</Link>
                                     </tr>
                                 )
                             )

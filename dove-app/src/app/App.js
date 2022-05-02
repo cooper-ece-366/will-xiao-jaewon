@@ -10,6 +10,7 @@ import {Route, Switch} from "react-router-dom";
 import AddStore from "../User/store/AddStore";
 import StoreList from "../User/store/StoreList";
 import LoadingIndicator from "../common/LoadingIndicator";
+import UpdateStore from "../User/store/UpdateStore";
 
 // Edited by Xiao Lin
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/add"><AddStore/></Route>
                         <Route exact path="/store"><StoreList/></Route>
+                        <Route exact path='/update-stores/:id'><UpdateStore/></Route>
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
