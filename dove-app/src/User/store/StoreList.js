@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { getTime } from "../../util/APIUtils";
+import { Button, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import LoadingIndicator from '../../common/LoadingIndicator';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
@@ -15,9 +17,10 @@ import {
     faStepForward,
     faFastForward,
     faSearch,
-    faTimes, faPlusSquare,
+    faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import axios from "axios";
 /*
 import {
     Card,
@@ -28,13 +31,11 @@ import {
     InputGroup,
     FormControl,
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
-import axios from "axios";
 */
 
 // Reference1: exempli-gratia
 // Reference2: https://github.com/mightyjava/book-rest-api-reactjs
+// Reference3: https://codebun.com/how-to-create-a-pagination-in-react-js-and-spring-boot/
 // Edited by Xiao Lin
 
 class StoreList extends Component {
@@ -45,13 +46,44 @@ class StoreList extends Component {
             readableNow: null,
             stores: [],
             currentPage:1,
-            recordPerPage:5,
+            recordPerPage:6,
+            search: '',
+            id: ''
         }
         this.refreshTime = this.refreshTime.bind(this);
         this.buttonClickedRefreshStoreInfo = this.buttonClickedRefreshStoreInfo.bind(this);
         this.buttonClickedReRender = this.buttonClickedReRender.bind(this);
-
     }
+
+    componentDidMount() {
+        this.refreshTime();
+        this.getStoresByPagination(this.state.currentPage);
+        /*
+        storeService.getStore().then((Response)=>{
+            this.setState({stores:Response.data})
+        });
+        console.log("componentDidMount: state = %o", this.state);
+         */
+    }
+
+    /*
+    componentWillUnmount() {
+        console.log("componentWillUnmount: state = %o", this.state);
+    }
+
+    componentDidUpdate() {
+        console.log("componentDidUpdate: state = %o", this.state);
+    }
+
+    componentWillUpdate() {
+        console.log("componentWillUpdate: state = %o", this.state);
+    }
+
+    shouldComponentUpdate() {
+        console.log("shouldComponentUpdate: state = %o", this.state);
+        return(true);
+    }
+*/
 
     refreshTime() {
         getTime()
@@ -71,31 +103,82 @@ class StoreList extends Component {
         });
     }
 
-    componentDidMount() {
-        this.refreshTime();
-        storeService.getStore().then((Response)=>{
-            this.setState({stores:Response.data})
+    getStoresByPagination(currentPage){
+        currentPage=currentPage-1;
+        axios.get("http://localhost:8080/store/?page="+currentPage+"&size="+this.state.recordPerPage)
+            .then(response => response.data).then((data) =>{
+            this.setState({stores:data.content,
+                totalPages:data.totalPages,
+                totalElements: data.totalElements,
+                currentPage: data.number+1
+            });
         });
-        console.log("componentDidMount: state = %o", this.state);
-    }
-/*
-    componentWillUnmount() {
-        console.log("componentWillUnmount: state = %o", this.state);
     }
 
-    componentDidUpdate() {
-        console.log("componentDidUpdate: state = %o", this.state);
-    }
+    showNextPage = () =>{
+        if(this.state.currentPage < Math.ceil(this.state.totalElements/this.state.recordPerPage)){
+            this.getStoresByPagination(this.state.currentPage + 1);
+        }
+    };
 
-    componentWillUpdate() {
-        console.log("componentWillUpdate: state = %o", this.state);
-    }
+    showLastPage = () =>{
+        if(this.state.currentPage < Math.ceil(this.state.totalElements/this.state.recordPerPage)){
+            this.getStoresByPagination(Math.ceil(this.state.totalElements/this.state.recordPerPage));
+        }
+    };
 
-    shouldComponentUpdate() {
-        console.log("shouldComponentUpdate: state = %o", this.state);
-        return(true);
-    }
-*/
+    showFirstPage = ()=>{
+        let firstPage = 1;
+        if(this.state.currentPage > firstPage){
+            this.getStoresByPagination(firstPage);
+        }
+    };
+
+    showPrevPage = () =>{
+        let prevPage = 1
+        if(this.state.currentPage > prevPage){
+            this.getStoresByPagination(this.state.currentPage - prevPage);
+        }
+    };
+
+    searchInput = (event) => {
+        this.setState({
+            //assigning value to event target
+            [event.target.name]:event.target.value,
+        });
+    };
+
+    searchStore = (currentPage) => {
+        currentPage=currentPage-1;
+        axios.get("http://localhost:8080/store/"+this.state.search+"?page="+currentPage+"&size="+this.state.recordPerPage)
+            .then(response => response.data).then((data) =>{
+            this.setState({stores:data.content,
+                totalPages:data.totalPages,
+                totalElements: data.totalElements,
+                currentPage: data.number+1
+            });
+        });
+    };
+
+    resetSearch = (currentPage) => {
+        this.setState({"search":''});
+        this.getStoresByPagination(this.state.currentPage);
+    };
+
+    deleteStore = (id) => {
+        storeService.delete().then(
+            (response) => {
+                console.log(response);
+                Alert.success("Store successfully deleted!");
+                this.setState({
+                    stores: this.state.stores.filter(store => store.id !== id)
+                });
+            }, (error) => {
+                console.log(error);
+                Alert.error("Operation failed!");
+            }
+        );
+    };
 
     buttonClickedRefreshStoreInfo() {
         console.log('StoreList was refreshed!');
@@ -113,8 +196,22 @@ class StoreList extends Component {
         }
         console.log("Render() -> state = %o",this.state);
 
+        const {stores, currentPage, totalPages, recordPerPage, search} = this.state;
         return (
             <div className="store-container">
+                <h1>Store List</h1>
+                <div className="container">
+                    <div className="form-group mb-2">
+                        <input type="text" className="form-control" name="search" size="50"
+                               placeholder="Search stores ..." autoComplete="off" value={search} onChange={this.searchInput}/>
+                        <button type="button" name="search" className="btn btn-info my-2 text-center mr-2"
+                                onClick={this.searchStore}><FontAwesomeIcon icon={faSearch} /> Search
+                        </button>
+                        <button type="reset" className="btn btn-secondary text-center ml-5"
+                                style={{marginLeft: '10px'}} onClick={this.resetSearch}> <FontAwesomeIcon icon={faTimes} /> Clear
+                        </button>
+                    </div>
+                </div>
                 <div className="list-container">
                     <table className="table table-bordered border-info">
                         <thead>
@@ -124,39 +221,46 @@ class StoreList extends Component {
                             <th>Address</th>
                             <th>Density</th>
                             <th>Rules</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {
-                            this.state.stores.map(
-                                stores =>
+                        {stores.length===0?
+                            <tr align="center"><td colSpan="5">No Record Found in Database</td></tr>:
+                            stores.map(
+                                (stores,index) =>(
                                     <tr key = {stores.id}>
-                                        <td>{stores.id}</td>
+                                        <td>{(recordPerPage*(currentPage-1))+index+1}</td>
                                         <td>{stores.name}</td>
                                         <td>{stores.address}</td>
                                         <td>{stores.density}</td>
                                         <td>{stores.info}</td>
+                                        <td><Link to={`/update-stores/${stores.id}`} className="btn btn-outline-primary"><FontAwesomeIcon icon={faEdit} /> Edit</Link>
+                                            <button className="btn btn-outline-danger" onClick={() => { this.deleteStore(stores.id) }}>
+                                            <FontAwesomeIcon icon={faTrash} /> Delete</button>
+                                        </td>
                                     </tr>
+                                )
                             )
                         }
                         </tbody>
                     </table>
                     <table className="table">
                         <div style={{float: 'left', fontFamily: 'monospace', color: '#0275d8', padding: '8px'}}>
-                            Page 1 of 1
+                            Page {currentPage} of {totalPages}
                         </div>
                         <div style={{float: 'right'}}>
                             <div className="clearfix"></div>
                             <nav aria-label="Page navigation example">
                                 <ul className="pagination">
-                                    <li className="button"><a type="button" className="page-link"
-                                                                 ><FontAwesomeIcon icon={faFastBackward} /> First</a></li>
-                                    <li className="button"><a type="button" className="page-link"
-                                                                 ><FontAwesomeIcon icon={faStepBackward} /> Previous</a></li>
-                                    <li className="button"><a type="button" className="page-link"
-                                                                 ><FontAwesomeIcon icon={faStepForward} /> Next</a></li>
-                                    <li className="button"><a type="button" className="page-link"
-                                                                 ><FontAwesomeIcon icon={faFastForward} /> Last</a></li>
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage === 1} onClick={this.showFirstPage}
+                                                                 ><FontAwesomeIcon icon={faFastBackward} /> First</Button></li>
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage === 1 } onClick={this.showPrevPage}
+                                                                 ><FontAwesomeIcon icon={faStepBackward} /> Previous</Button></li>
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage === totalPages } onClick={this.showNextPage}
+                                                                 ><FontAwesomeIcon icon={faStepForward} /> Next</Button></li>
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage === totalPages} onClick={this.showLastPage}
+                                                                 ><FontAwesomeIcon icon={faFastForward} /> Last</Button></li>
                                 </ul>
                             </nav>
                         </div>
@@ -165,11 +269,10 @@ class StoreList extends Component {
                 <div className="time-container">
                     <div className="store-info">
                         <div className="time">
-                            <p>Last refresh time is</p>
-                            <p>{this.state.readableNow}</p>
+                            <p>Last refresh time is {this.state.readableNow}</p>
                         </div>
                         <button className="button" onClick={this.buttonClickedReRender}>Click to Re-Render</button>
-                        <button className="button" onClick={this.buttonClickedRefreshStoreInfo}>Click to Refresh Store</button>
+                        <button className="button" onClick={this.buttonClickedRefreshStoreInfo}>Click to Refresh Store List</button>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ export const FACEBOOK_AUTH_URL = API_BASE_URL + '/oauth2/authorize/facebook?redi
 export const GITHUB_AUTH_URL = API_BASE_URL + '/oauth2/authorize/github?redirect_uri=' + OAUTH2_REDIRECT_URI;
 
 export const apiUrlPrefix = "http://localhost:8080";
-export const StoreApiUrl = apiUrlPrefix.concat("/api/store/all");
+export const StoreApiUrl = apiUrlPrefix.concat("/api/stores");
 export const timeApiUrl = apiUrlPrefix.concat("/api/time");
 export const appVersionApiUrl = apiUrlPrefix.concat("/api/version/");
 

@@ -3,6 +3,7 @@ import Alert from 'react-s-alert';
 import 'react-bootstrap';
 import './AddStore.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {Button} from "react-bootstrap";
 import {
     faPlusSquare,
     faUndo
@@ -44,7 +45,7 @@ class AddStore extends Component {
                 Alert.success("New store info added!");
             } ,(error) =>{
                 console.log(error);
-                Alert.error("Operation failed");
+                Alert.error("Operation failed!");
             }
         );
     }
@@ -82,8 +83,8 @@ class AddStore extends Component {
                                            placeholder="Enter Here" value={info} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>
                                 <div class="button-group">
-                                    <button class="button" type="submit"><FontAwesomeIcon icon={faPlusSquare} />Add</button>
-                                    <button class="button" type="reset"><FontAwesomeIcon icon={faUndo} />Clear</button>
+                                    <Button class="button" type="submit" variant="outline-primary"><FontAwesomeIcon icon={faPlusSquare} /> Add</Button>
+                                    <Button class="button" type="reset" variant="outline-danger"><FontAwesomeIcon icon={faUndo} /> Clear</Button>
                                 </div>
                             </form>
                         </div>
