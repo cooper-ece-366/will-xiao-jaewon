@@ -46,7 +46,7 @@ class StoreList extends Component {
             readableNow: null,
             stores: [],
             currentPage:1,
-            recordPerPage:5,
+            recordPerPage:6,
             search: '',
             id: ''
         }
@@ -235,9 +235,10 @@ class StoreList extends Component {
                                         <td>{stores.address}</td>
                                         <td>{stores.density}</td>
                                         <td>{stores.info}</td>
-                                        <td><button className="btn btn-outline-danger" onClick={() => { this.deleteStore(stores.id) }}>
-                                            <FontAwesomeIcon icon={faTrash} /> Delete</button></td>
-                                        <Link to={`/update-stores/${books.id}`} className="btn btn-outline-dark">Edit</Link>
+                                        <td><Link to={`/update-stores/${stores.id}`} className="btn btn-outline-primary"><FontAwesomeIcon icon={faEdit} /> Edit</Link>
+                                            <button className="btn btn-outline-danger" onClick={() => { this.deleteStore(stores.id) }}>
+                                            <FontAwesomeIcon icon={faTrash} /> Delete</button>
+                                        </td>
                                     </tr>
                                 )
                             )
@@ -252,13 +253,13 @@ class StoreList extends Component {
                             <div className="clearfix"></div>
                             <nav aria-label="Page navigation example">
                                 <ul className="pagination">
-                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage===1?true:false} onClick={this.showPrevPage}
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage === 1} onClick={this.showFirstPage}
                                                                  ><FontAwesomeIcon icon={faFastBackward} /> First</Button></li>
-                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage===1?true:false } onClick={this.showFirstPage}
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage === 1 } onClick={this.showPrevPage}
                                                                  ><FontAwesomeIcon icon={faStepBackward} /> Previous</Button></li>
-                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage===totalPages?true:false } onClick={this.showNextPage}
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage === totalPages } onClick={this.showNextPage}
                                                                  ><FontAwesomeIcon icon={faStepForward} /> Next</Button></li>
-                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage===totalPages?true:false} onClick={this.showLastPage}
+                                    <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage === totalPages} onClick={this.showLastPage}
                                                                  ><FontAwesomeIcon icon={faFastForward} /> Last</Button></li>
                                 </ul>
                             </nav>
@@ -268,8 +269,7 @@ class StoreList extends Component {
                 <div className="time-container">
                     <div className="store-info">
                         <div className="time">
-                            <p>Last refresh time is</p>
-                            <p>{this.state.readableNow}</p>
+                            <p>Last refresh time is {this.state.readableNow}</p>
                         </div>
                         <button className="button" onClick={this.buttonClickedReRender}>Click to Re-Render</button>
                         <button className="button" onClick={this.buttonClickedRefreshStoreInfo}>Click to Refresh Store List</button>
