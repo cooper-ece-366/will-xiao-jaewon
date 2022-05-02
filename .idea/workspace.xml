@@ -4,17 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b64d66a8-7a71-49d0-98ee-7979aa771c4a" name="Changes" comment="">
+    <list default="true" id="b64d66a8-7a71-49d0-98ee-7979aa771c4a" name="Changes" comment="Created a storeList search bar prototype (Need backend implementation)">
+      <change afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services/Services.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/729ae48d-1247-4c9b-95ba-da961ee378f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/729ae48d-1247-4c9b-95ba-da961ee378f0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-app/src/User/store/AddStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/src/User/store/AddStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-app/src/User/store/StoreList.css" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/src/User/store/StoreList.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dove-app/src/User/store/StoreList.js" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/src/User/store/StoreList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-app/src/const/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/src/const/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/controller/StoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/controller/StoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/repository/StoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/repository/StoreRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -23,6 +32,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -48,25 +65,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "database.output.results",
-    "spring.configuration.checksum": "cf1e8c14e54505f60aa10ceb8d5d8ab3"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
-    ]
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
   <component name="RecentsManager">
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="" />
@@ -74,9 +80,9 @@
   </component>
   <component name="RunManager">
     <configuration name="RestApiServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <option name="ACTIVE_PROFILES" />
       <module name="server" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="edu.cooper.ece366.project.dove.server.RestApiServer" />
+      <option name="ACTIVE_PROFILES" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -92,6 +98,8 @@
       <updated>1651393728187</updated>
       <workItem from="1651393734262" duration="58000" />
       <workItem from="1651429220564" duration="12400000" />
+      <workItem from="1651460312498" duration="5119000" />
+      <workItem from="1651467214120" duration="4186000" />
     </task>
     <task id="LOCAL-00001" summary="Connected the frontend to the backend to retrieve data from the database">
       <created>1651432853771</created>
