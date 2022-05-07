@@ -9,7 +9,6 @@ import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './StoreList.css';
 import storeService from "../../services/storeService";
 import {
-    faList,
     faEdit,
     faTrash,
     faStepBackward,
@@ -17,21 +16,13 @@ import {
     faStepForward,
     faFastForward,
     faSearch,
-    faTimes
+    faTimes,
+    faWarning,
+    faXmarkCircle,
+    faCheckCircle
 } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
-/*
-import {
-    Card,
-    Table,
-    Image,
-    ButtonGroup,
-    Button,
-    InputGroup,
-    FormControl,
-} from "react-bootstrap";
-*/
 
 // Reference1: exempli-gratia
 // Reference2: https://github.com/mightyjava/book-rest-api-reactjs
@@ -105,7 +96,8 @@ class StoreList extends Component {
 
     getStoresByPagination(currentPage){
         currentPage=currentPage-1;
-        axios.get("http://localhost:8080/store/?page="+currentPage+"&size="+this.state.recordPerPage)
+        storeService.getStores(currentPage, this.state.recordPerPage)
+        //axios.get("http://localhost:8080/store/?page="+currentPage+"&size="+this.state.recordPerPage)
             .then(response => response.data).then((data) =>{
             this.setState({stores:data.content,
                 totalPages:data.totalPages,
@@ -150,7 +142,8 @@ class StoreList extends Component {
 
     searchStore = (currentPage) => {
         currentPage=currentPage-1;
-        axios.get("http://localhost:8080/store/"+this.state.search+"?page="+currentPage+"&size="+this.state.recordPerPage)
+        storeService.storeSearch(currentPage, this.state.recordPerPage, this.state.search)
+        //axios.get("http://localhost:8080/store/"+this.state.search+"?page="+currentPage+"&size="+this.state.recordPerPage)
             .then(response => response.data).then((data) =>{
             this.setState({stores:data.content,
                 totalPages:data.totalPages,
@@ -233,7 +226,14 @@ class StoreList extends Component {
                                         <td>{(recordPerPage*(currentPage-1))+index+1}</td>
                                         <td>{stores.name}</td>
                                         <td>{stores.address}</td>
-                                        <td>{stores.density}</td>
+                                        <td>{stores.density>0.8 ?
+                                            (<Button type="button" variant="danger"
+                                            ><FontAwesomeIcon icon={faXmarkCircle} /> {stores.density}</Button>) :
+                                             stores.density<0.5 ?
+                                                 (<Button type="button" variant="success"
+                                            ><FontAwesomeIcon icon={faCheckCircle} /> {stores.density}</Button>) :
+                                                 (<Button type="button" variant="warning"
+                                            ><FontAwesomeIcon icon={faWarning} /> {stores.density}</Button>)}</td>
                                         <td>{stores.info}</td>
                                         <td><Link to={`/update-stores/${stores.id}`} className="btn btn-outline-primary"><FontAwesomeIcon icon={faEdit} /> Edit</Link>
                                             <button className="btn btn-outline-danger" onClick={() => { this.deleteStore(stores.id) }}>
