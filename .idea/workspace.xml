@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b64d66a8-7a71-49d0-98ee-7979aa771c4a" name="Changes" comment="Created a storeList search bar prototype (Need backend implementation)">
-      <change afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services/Services.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/729ae48d-1247-4c9b-95ba-da961ee378f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/729ae48d-1247-4c9b-95ba-da961ee378f0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services/AddressConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services/Geometry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services/GoogleResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services/Result.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-app/src/User/store/StoreList.js" beforeDir="false" afterPath="$PROJECT_DIR$/dove-app/src/User/store/StoreList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/controller/StoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/controller/StoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/repository/StoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/repository/StoreRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dove-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dove-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/ControllerApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/ControllerApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services/Services.java" beforeDir="false" afterPath="$PROJECT_DIR$/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services/geoApi.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +102,7 @@
       <workItem from="1651429220564" duration="12400000" />
       <workItem from="1651460312498" duration="5119000" />
       <workItem from="1651467214120" duration="4186000" />
+      <workItem from="1651906009614" duration="6290000" />
     </task>
     <task id="LOCAL-00001" summary="Connected the frontend to the backend to retrieve data from the database">
       <created>1651432853771</created>
