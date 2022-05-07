@@ -17,7 +17,7 @@ NOW=$(date "+%Y%m%d%H%M%S")
 APP_MAVEN_VERSION=$(mvn help:evaluate -Dexpression=project.version | grep -e '^[^\[]')
 APP_GIT_VERSION=$(git rev-parse --abbrev-ref HEAD)
 
-RESOURCES_DIR=./borsa-service/src/main/resources
+RESOURCES_DIR=./dove-service/src/main/resources
 APP_PROP_FILE=${RESOURCES_DIR}/application.properties
 APP_TEMPLATE_PROP_FILE=${RESOURCES_DIR}/application.properties-template
 APP_VERSION_FILE=./app.version
