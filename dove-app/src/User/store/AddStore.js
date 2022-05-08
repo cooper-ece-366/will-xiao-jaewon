@@ -63,22 +63,22 @@ class AddStore extends Component {
                         <div class="card-body">
                             <form onSubmit={this.formHandle}>
                                 <div class="form-group">
-                                    <label for="storeNameInput" className="font-ch">Store Name</label>
+                                    <label htmlFor="storeNameInput" className="font-ch">Store Name</label>
                                     <input type="text" class="form-control" name="name"
                                            placeholder="Enter Here" value={name} autoComplete="off" onChange={this.onInputChange} />
                                 </div>
                                 <div class="form-group">
-                                    <label for="addressInput" className="font-ch">Address</label>
+                                    <label htmlFor="addressInput" className="font-ch">Address</label>
                                     <input type="text" class="form-control" name="address"
                                            placeholder="Enter Here" value={address} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="densityInput" className="font-ch">Population Density</label>
+                                    <label htmlFor="densityInput" className="font-ch">Population Density</label>
                                     <input type="text" class="form-control" name="density"
                                            placeholder="Enter Here" value={density} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="infoInput" className="font-ch">Rules</label>
+                                    <label htmlFor="infoInput" className="font-ch">Rules</label>
                                     <input type="text" className="form-control" name="info"
                                            placeholder="Enter Here" value={info} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>

@@ -159,7 +159,7 @@ class StoreList extends Component {
     };
 
     deleteStore = (id) => {
-        storeService.delete().then(
+        storeService.delete(id).then(
             (response) => {
                 console.log(response);
                 Alert.success("Store successfully deleted!");

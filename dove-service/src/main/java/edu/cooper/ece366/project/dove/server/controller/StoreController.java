@@ -42,23 +42,25 @@ public class StoreController { // edited by Will
     }
 
     @PostMapping("/store")
-    public ResponseEntity<Store> createBlog(@RequestBody Store store){
+    public ResponseEntity<Store> createStore(@RequestBody Store store){
         return new ResponseEntity<Store>(service.addStore(store), HttpStatus.OK);
     }
+
     @GetMapping("/store")
     public List<Store> getStore(){
         return service.getAllStore();
     }
+
     @GetMapping("/store/{id}")
     public ResponseEntity<Store> getStoreById(@PathVariable("id") Integer id){
         return new ResponseEntity<Store>(service.getStoreById(id),HttpStatus.OK);
     }
     @PutMapping("/store/{id}")
-    public ResponseEntity<Store> updateBlog(@PathVariable("id") Integer id,@RequestBody Store store){
+    public ResponseEntity<Store> updateStore(@PathVariable("id") Integer id,@RequestBody Store store){
         return new ResponseEntity<Store>(service.updateStore(store),HttpStatus.OK);
     }
     @DeleteMapping("/store/{id}")
-    public ResponseEntity<Store> deleteBlog(@PathVariable ("id") Integer id){
+    public ResponseEntity<Store> deleteStore(@PathVariable ("id") Integer id){
         service.delete(id);
         return new ResponseEntity<Store>(HttpStatus.OK);
     }

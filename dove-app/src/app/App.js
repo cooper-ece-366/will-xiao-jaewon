@@ -37,9 +37,9 @@ class App extends Component {
                 <div className="app-body">
                     <Switch>
                         <Route exact path="/" component={Home}/>
-                        <Route exact path="/add"><AddStore/></Route>
-                        <Route exact path="/store"><StoreList/></Route>
-                        <Route exact path='/update-stores/:id'><UpdateStore/></Route>
+                        <Route exact path="/add" component={AddStore}/>
+                        <Route exact path="/store" component={StoreList}/>
+                        <Route exact path="/update-stores/:id" component={UpdateStore}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
