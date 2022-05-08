@@ -18,7 +18,7 @@ class AddStore extends Component {
     constructor(props){
         super(props);
         this.state = {
-            storeName: '',
+            name: '',
             address: '',
             density: '',
             info: ''
@@ -34,7 +34,7 @@ class AddStore extends Component {
     formHandle = event =>{
         event.preventDefault();
         const store = {
-            storeName:this.state.storeName,
+            name:this.state.name,
             address:this.state.address,
             density:this.state.density,
             info:this.state.info
@@ -51,7 +51,7 @@ class AddStore extends Component {
     }
 
     render() {
-        const {storeName, address, density, info} = this.state
+        const {name, address, density, info} = this.state
 
         return (
             <div>
@@ -64,8 +64,8 @@ class AddStore extends Component {
                             <form onSubmit={this.formHandle}>
                                 <div class="form-group">
                                     <label for="storeNameInput" className="font-ch">Store Name</label>
-                                    <input type="text" class="form-control" name="storeName"
-                                           placeholder="Enter Here" value={storeName} autoComplete="off" onChange={this.onInputChange} />
+                                    <input type="text" class="form-control" name="name"
+                                           placeholder="Enter Here" value={name} autoComplete="off" onChange={this.onInputChange} />
                                 </div>
                                 <div class="form-group">
                                     <label for="addressInput" className="font-ch">Address</label>
