@@ -211,6 +211,7 @@ class StoreList extends Component {
                         <tr>
                             <th>Id</th>
                             <th>Store</th>
+                            <th>Type</th>
                             <th>Address</th>
                             <th>Density</th>
                             <th>Rules</th>
@@ -225,6 +226,7 @@ class StoreList extends Component {
                                     <tr key = {stores.id}>
                                         <td>{(recordPerPage*(currentPage-1))+index+1}</td>
                                         <td>{stores.name}</td>
+                                        <td>{stores.type}</td>
                                         <td>{stores.address}</td>
                                         <td>{stores.density>0.8 ?
                                             (<Button type="button" variant="danger"

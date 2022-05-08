@@ -75,6 +75,10 @@
     color: #1E90FF;
 }
 
+.Login {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 500px) {
     .header a, .header input[type=text] {
         float: none;

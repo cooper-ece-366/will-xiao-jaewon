@@ -20,6 +20,7 @@ class AddStore extends Component {
         this.state = {
             name: '',
             address: '',
+            type:'',
             density: '',
             info: ''
         };
@@ -36,6 +37,7 @@ class AddStore extends Component {
         const store = {
             name:this.state.name,
             address:this.state.address,
+            type:this.state.type,
             density:this.state.density,
             info:this.state.info
         } ;
@@ -50,13 +52,21 @@ class AddStore extends Component {
         );
     }
 
+    resetInput = () => {
+        this.setState({"name":''})
+        this.setState({"address":''})
+        this.setState({"type":''})
+        this.setState({"density":''})
+        this.setState({"info":''})
+    }
+
     render() {
-        const {name, address, density, info} = this.state
+        const {name, address, type, density, info} = this.state
 
         return (
             <div>
-                <div className="box-container">
-                    <div class="box">
+                <div className="container">
+                    <div class="card shadow bg-bg">
                         <div class="card-header card-font">
                             Add a New Store
                         </div>
@@ -72,6 +82,12 @@ class AddStore extends Component {
                                     <input type="text" class="form-control" name="address"
                                            placeholder="Enter Here" value={address} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>
+                                <div className="form-group">
+                                    <label htmlFor="typeInput" className="font-ch">Store Type</label>
+                                    <input type="text" className="form-control" name="type"
+                                           placeholder="Enter Here" value={type} autoComplete="off"
+                                           onChange={this.onInputChange}/>
+                                </div>
                                 <div class="form-group">
                                     <label htmlFor="densityInput" className="font-ch">Population Density</label>
                                     <input type="text" class="form-control" name="density"
@@ -84,7 +100,7 @@ class AddStore extends Component {
                                 </div>
                                 <div class="button-group">
                                     <Button class="button" type="submit" variant="outline-primary"><FontAwesomeIcon icon={faPlusSquare} /> Add</Button>
-                                    <Button class="button" type="reset" variant="outline-danger"><FontAwesomeIcon icon={faUndo} /> Clear</Button>
+                                    <Button class="button" type="reset" variant="outline-danger" onClick={this.resetInput}><FontAwesomeIcon icon={faUndo} /> Clear</Button>
                                 </div>
                             </form>
                         </div>
@@ -94,4 +110,5 @@ class AddStore extends Component {
         )
     }
 }
+
 export default AddStore
