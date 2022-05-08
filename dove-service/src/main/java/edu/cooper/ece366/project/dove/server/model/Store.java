@@ -23,10 +23,10 @@ import lombok.Setter;
 public class Store { // edited by Will
     //Hard-coded store name and information
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+//    @Column(name = "id", unique = true)
+
 
     @Column(name = "name")
     private String name;
