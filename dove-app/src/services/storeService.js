@@ -9,10 +9,10 @@ class storeService{
         return axios.get(StoreApiUrl);
     }
     getStores =(currentPage, recordPerPage) =>{
-        return axios.get(apiUrlPrefix.concat("/store/?page="+currentPage+"&size="+recordPerPage))
+        return axios.get(apiUrlPrefix.concat("/store?page="+currentPage+"&size="+recordPerPage))
     }
     storeSearch =(currentPage, recordPerPage, search) =>{
-        return axios.get(apiUrlPrefix.concat("/store/"+search+"?page="+currentPage+"&size="+recordPerPage))
+        return axios.get(apiUrlPrefix.concat("/store?search="+search+"?page="+currentPage+"&size="+recordPerPage))
     }
     create = data =>{
         return axios.post(StoreApiUrl,data)
