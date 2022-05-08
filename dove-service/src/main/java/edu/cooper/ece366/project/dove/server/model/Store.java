@@ -6,11 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.*;
 */
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,16 +23,27 @@ import lombok.Setter;
 public class Store { // edited by Will
     //Hard-coded store name and information
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+//    @Column(name = "id", unique = true)
 
+
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "info")
     private String info;
 
+    @Column(name = "density")
     private Float density;
 
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "type")
+    private String type;
+
+    public String getType () { return type; }
 
     public String getName () {
         return name;
@@ -44,7 +51,6 @@ public class Store { // edited by Will
 
     public String getAddress () {
         return address;
-
     }
 
     public Integer getId () {

@@ -15,16 +15,20 @@ class storeService{
         return axios.get(apiUrlPrefix.concat("/store/"+search+"?page="+currentPage+"&size="+recordPerPage))
     }
     create = data =>{
-        return axios.post(StoreApiUrl,data)
+        // return axios.post(StoreApiUrl,data)
+        return axios.post(`http://localhost:8080/store/store`,data)
     }
     getById = id =>{
-        return axios.get(StoreApiUrl.concat(id))
+        // return axios.get(StoreApiUrl.concat(id))
+        return axios.get(`http://localhost:8080/store/store/${id}`)
     }
     delete = id =>{
-        return axios.delete(StoreApiUrl.concat(id))
+        // return axios.delete(StoreApiUrl.concat(id))
+        return axios.delete(`http://localhost:8080/store/store/${id}`)
     }
     update = (id,data) =>{
-        return axios.put(StoreApiUrl.concat(id),data)
+        // return axios.put(StoreApiUrl.concat(id),data)
+        return axios.put(`http://localhost:8080/store/store/${id}`,data)
     }
 }
 
