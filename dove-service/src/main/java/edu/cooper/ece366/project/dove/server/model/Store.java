@@ -1,26 +1,22 @@
 package edu.cooper.ece366.project.dove.server.model;
-/*
-import java.util.Collections;
-import java.util.List;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.*;
-*/
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.locationtech.jts.geom.Point;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"coords"})
 
 // Reference: https://codebun.com/search-record-from-a-table-in-react-js-spring-boot-and-mysql/
 @Setter
 @Getter
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "stores")
@@ -30,34 +26,23 @@ public class Store { // edited by Will
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @NonNull
     private String name;
 
+    @NonNull
     private String info;
 
+    @NonNull
     private Float density;
 
+    @NonNull
     private String address;
 
-    public String getName () {
-        return name;
-    }
+    @NonNull
+    private String type;
 
-    public String getAddress () {
-        return address;
-
-    }
-
-    public Integer getId () {
-        return id;
-    }
-
-    public Float getDensity () {
-        return density;
-    }
-
-    public String getInfo () {
-        return info;
-    }
+    @NonNull
+    private Point coords;
 }
 
 /*
