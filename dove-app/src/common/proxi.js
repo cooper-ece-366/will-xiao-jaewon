@@ -44,6 +44,16 @@ import {format} from "react-string-format";
 //     );
 // }
 
+const openMap = (e, addr) => {
+    locationService.getCoords(addr)
+        .then(response => response.data)
+        .then((data) =>{
+            console.log(data.lat);
+            console.log(data.lng);
+            window.open(`https://www.openstreetmap.org/?mlat=${data.lat}&mlon=${data.lng}#map=15/${data.lat.slice(0, 7)}/${data.lng.slice(0, 8)}`);
+        });
+}
+
 const Proximity = () => {
     
     const [ distance, setDistance ] = useState(1);
@@ -111,15 +121,15 @@ const Proximity = () => {
                                 <tr key = {store.id}>
                                     <td>{index}</td>
                                     <td>{store.name}</td>
-                                    <td>{store.address}</td>
+                                    <td><a href="#" onClick={((e) => openMap(e, store.address))}>{store.address}</a></td>
                                     <td>{store.density>0.8 ?
                                         (<Button type="button" variant="danger"
-                                        ><FontAwesomeIcon icon={faXmarkCircle} /> {stores.density}</Button>) :
-                                            stores.density<0.5 ?
+                                        ><FontAwesomeIcon icon={faXmarkCircle} /> {store.density}</Button>) :
+                                            store.density<0.5 ?
                                                 (<Button type="button" variant="success"
-                                        ><FontAwesomeIcon icon={faCheckCircle} /> {stores.density}</Button>) :
+                                        ><FontAwesomeIcon icon={faCheckCircle} /> {store.density}</Button>) :
                                                 (<Button type="button" variant="warning"
-                                        ><FontAwesomeIcon icon={faWarning} /> {stores.density}</Button>)}</td>
+                                        ><FontAwesomeIcon icon={faWarning} /> {store.density}</Button>)}</td>
                                     <td>{store.info}</td>
                                     {/* <td><Link to={`/update-stores/${stores.id}`} className="btn btn-outline-primary"><FontAwesomeIcon icon={faEdit} /> Edit</Link> <button className="btn btn-outline-danger" onClick={() => { this.deleteStore(stores.id) }}>
                                         <FontAwesomeIcon icon={faTrash} /> Delete</button>
