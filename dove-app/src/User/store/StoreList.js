@@ -8,6 +8,7 @@ import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './StoreList.css';
 import storeService from "../../services/storeService";
+import locationService from "../../services/locationService";
 import {
     faEdit,
     faTrash,
@@ -183,6 +184,16 @@ class StoreList extends Component {
         this.render();
     }
 
+    openMap(e, addr) {
+        locationService.getCoords(addr)
+            .then(response => response.data)
+            .then((data) =>{
+                console.log(data.lat);
+                console.log(data.lng);
+                window.open(`https://www.openstreetmap.org/?mlat=${data.lat}&mlon=${data.lng}#map=15/${data.lat.slice(0, 7)}/${data.lng.slice(0, 8)}`);
+            });
+    }
+
     render() {
         if(this.state.loading) {
             return <LoadingIndicator />
@@ -227,7 +238,7 @@ class StoreList extends Component {
                                         <td>{(recordPerPage*(currentPage-1))+index+1}</td>
                                         <td>{stores.name}</td>
                                         <td>{stores.type}</td>
-                                        <td>{stores.address}</td>
+                                        <td><a href="#" onClick={((e) => this.openMap(e, stores.address))}>{stores.address}</a></td>
                                         <td>{stores.density>0.8 ?
                                             (<Button type="button" variant="danger"
                                             ><FontAwesomeIcon icon={faXmarkCircle} /> {stores.density}</Button>) :
