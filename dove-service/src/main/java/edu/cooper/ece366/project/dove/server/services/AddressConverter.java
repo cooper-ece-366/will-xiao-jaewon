@@ -6,9 +6,11 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
-import org.codehaus.jackson.map.ObjectMapper;
 
 public class AddressConverter {
     /*
@@ -28,9 +30,6 @@ public class AddressConverter {
      */
     public GoogleResponse convertToLatLong(String fullAddress) throws IOException {
 
-        String URL = "https://maps.googleapis.com/maps/api/geocode/json";
-        String API_KEY = "AIzaSyCyenIgeYgjtL6p8rjiYi7MBRGy3omuxwo";
-
         /*
          * Create an java.net.URL object by passing the request URL in
          * constructor. Here you can see I am converting the fullAddress String
@@ -41,10 +40,16 @@ public class AddressConverter {
          * from a device with a location sensor. This value must be either true
          * or false.
          */
-        URL url = new URL(URL + "?address=" + URLEncoder.encode(fullAddress, "UTF-8") + "&key=" + API_KEY + "&sensor=false");
+        URL url = new URL(
+                String.format(
+                        "%s?address=%s&key=%s&sensor=false",
+                        URL,
+                        URLEncoder.encode(fullAddress, StandardCharsets.UTF_8),
+                        API_KEY
+                )
+        );
         // Open the Connection
         URLConnection conn = url.openConnection();
-//        System.out.println(url);
 
         InputStream in = conn.getInputStream();
         ObjectMapper mapper = new ObjectMapper();
@@ -65,8 +70,14 @@ public class AddressConverter {
          * from a device with a location sensor. This value must be either true
          * or false.
          */
-        URL url = new URL(URL + "?latlng="
-                + URLEncoder.encode(latlongString, "UTF-8") + "&sensor=false");
+        URL url = new URL(
+                String.format(
+                        "%s?latlng=%s&key=%s&sensor=false",
+                        URL,
+                        URLEncoder.encode(latlongString, StandardCharsets.UTF_8),
+                        API_KEY
+                )
+        );
         // Open the Connection
         URLConnection conn = url.openConnection();
 
@@ -92,7 +103,7 @@ public class AddressConverter {
         }
         else
         {
-            System.out.println(res.getStatus());
+            System.out.println(res.getStatus() + ": " + res.getError_message());
         }
 //
 //        System.out.println("\n");

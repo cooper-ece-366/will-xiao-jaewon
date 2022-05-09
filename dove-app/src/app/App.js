@@ -11,6 +11,7 @@ import AddStore from "../User/store/AddStore";
 import StoreList from "../User/store/StoreList";
 import LoadingIndicator from "../common/LoadingIndicator";
 import UpdateStore from "../User/store/UpdateStore";
+import Proximity from "../common/proxi";
 
 // Edited by Xiao Lin
 class App extends Component {
@@ -40,6 +41,7 @@ class App extends Component {
                         <Route exact path="/add" component={AddStore}/>
                         <Route exact path="/store" component={StoreList}/>
                         <Route exact path="/update-stores/:id" component={UpdateStore}/>
+                        <Route exact path="/proxi" component={Proximity}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </div>

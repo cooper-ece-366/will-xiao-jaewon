@@ -1,8 +1,8 @@
 package edu.cooper.ece366.project.dove.server.services;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -17,6 +17,9 @@ public class Result {
     private String place_id;
 
     private String error_message;
+
+    @JsonIgnore
+    private Object plus_code;
 
     @JsonIgnore
     private Object address_components;

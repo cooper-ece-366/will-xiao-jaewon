@@ -16,8 +16,9 @@ public interface StoreRepository extends JpaRepository<Store, Integer>{
     @Query("from Store s where s.name=:keyword OR s.address=:keyword OR s.info=:keyword OR s.type=:keyword OR s.id=:keyword")
     Page<Store> findAll(Pageable pageable, @Param("keyword") String keyword);
 
-    public Store findById(long ID);
-//
+    @Query("FROM Store s WHERE st_distance_sphere(POINT(:lng,:lat), s.coords) < :distance ORDER BY st_distance_sphere(POINT(:lng,:lat), s.coords)")
+    Page<Store> findDistance(Pageable pageable, @Param("distance") int distance, @Param("lat") String lat, @Param("lng") String lng);
+
 //    Store findAllByName(String name);
 //
 //    List<Store> findByNameContaining(String name);

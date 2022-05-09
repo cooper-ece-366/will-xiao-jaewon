@@ -1,8 +1,10 @@
 package edu.cooper.ece366.project.dove.server.services;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+import edu.cooper.ece366.project.dove.server.model.NoSuchAddressException;
 import edu.cooper.ece366.project.dove.server.model.Store;
 import edu.cooper.ece366.project.dove.server.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +28,20 @@ public class storeServiceImpl implements storeService{
     }
 
     @Override
-    public Store updateStore(Store store) {
-        Store store2 = storeRepository.findById(store.getId()).get();
-        if (store2 != null) {
-            store2.setName(store.getName());
-            store2.setAddress(store.getAddress());
-            store2.setInfo(store.getInfo());
-            store2.setDensity(store.getDensity());
-            store2.setType(store.getType());
-            storeRepository.save(store2);
+    public Optional<Store> updateStore(Integer id, Store store) throws IOException, NoSuchAddressException {
+        Optional<Store> store2 = this.getStoreById(id);
+        if (store2.isPresent()) {
+            Store s = store2.get();
+            s.setName(store.getName());
+            s.setAddress(store.getAddress());
+            s.setInfo(store.getInfo());
+            s.setDensity(store.getDensity());
+            s.setType(store.getType());
+            s = s.newWithCoords();
+            return Optional.of(storeRepository.save(s));
+        } else {
+            return Optional.empty();
         }
-        return store2;
     }
 
     @Override
@@ -45,7 +50,7 @@ public class storeServiceImpl implements storeService{
     }
 
     @Override
-    public Store getStoreById (Integer id){
-        return storeRepository.findById(id).get();
+    public Optional<Store> getStoreById (Integer id){
+        return storeRepository.findById(id);
     }
 }

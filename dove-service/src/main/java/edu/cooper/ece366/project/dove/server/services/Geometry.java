@@ -1,7 +1,7 @@
 package edu.cooper.ece366.project.dove.server.services;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Geometry {
 

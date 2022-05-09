@@ -1,22 +1,23 @@
 package edu.cooper.ece366.project.dove.server.model;
-/*
-import java.util.Collections;
-import java.util.List;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.*;
-*/
 import javax.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.cooper.ece366.project.dove.server.services.AddressConverter;
+import edu.cooper.ece366.project.dove.server.services.GoogleResponse;
+import lombok.*;
+import org.locationtech.jts.geom.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.locationtech.jts.geom.impl.CoordinateArraySequence;
+
+import java.io.IOException;
+
+@JsonIgnoreProperties({"coords"})
 
 // Reference: https://codebun.com/search-record-from-a-table-in-react-js-spring-boot-and-mysql/
 @Setter
 @Getter
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "stores")
@@ -25,8 +26,6 @@ public class Store { // edited by Will
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-//    @Column(name = "id", unique = true)
-
 
     @Column(name = "name")
     private String name;
@@ -43,26 +42,27 @@ public class Store { // edited by Will
     @Column(name = "type")
     private String type;
 
-    public String getType () { return type; }
+    @Column(name = "coords")
+    private Point coords;
 
-    public String getName () {
-        return name;
-    }
+    public Store newWithCoords() throws IOException, NoSuchAddressException {
+        GoogleResponse res = new AddressConverter().convertToLatLong(this.address);
 
-    public String getAddress () {
-        return address;
-    }
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println(mapper.writeValueAsString(res));
 
-    public Integer getId () {
-        return id;
-    }
-
-    public Float getDensity () {
-        return density;
-    }
-
-    public String getInfo () {
-        return info;
+        if(res.getStatus().equals("OK")) {
+            String lat = res.getResults()[0].getGeometry().getLocation().getLat();
+            String lng = res.getResults()[0].getGeometry().getLocation().getLng();
+            CoordinateXY c = new CoordinateXY(Float.parseFloat(lng), Float.parseFloat(lat));
+            Coordinate[] cs = {c};
+            this.coords = (new Point(new CoordinateArraySequence(cs), new GeometryFactory(new PrecisionModel())));
+            return this;
+        } else if(res.getStatus().equals("ZERO_RESULTS")) {
+            throw new NoSuchAddressException();
+        } else {
+            return null;
+        }
     }
 }
 

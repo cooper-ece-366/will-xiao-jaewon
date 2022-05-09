@@ -8,27 +8,30 @@ class storeService{
     getStore(){
         return axios.get(StoreApiUrl);
     }
+
+    // Pageable endpoints
     getStores =(currentPage, recordPerPage) =>{
-        return axios.get(apiUrlPrefix.concat("/store/?page="+currentPage+"&size="+recordPerPage))
+        return axios.get(`${apiUrlPrefix}/store?page=${currentPage}&size=${recordPerPage}`)
     }
     storeSearch =(currentPage, recordPerPage, search) =>{
-        return axios.get(apiUrlPrefix.concat("/store/"+search+"?page="+currentPage+"&size="+recordPerPage))
+        return axios.get(`${apiUrlPrefix}/store?search=${search}&page=${currentPage}&size=${recordPerPage}`)
     }
+    nearby = (distance,from) => {
+        return axios.get(`${apiUrlPrefix}/store?distance=${distance}&from=${from}`)
+    }
+
+    // CRUD endpoints
     create = data =>{
-        // return axios.post(StoreApiUrl,data)
-        return axios.post(`http://localhost:8080/store/store`,data)
+        return axios.post(`${apiUrlPrefix}/store/store`, data)
     }
     getById = id =>{
-        // return axios.get(StoreApiUrl.concat(id))
-        return axios.get(`http://localhost:8080/store/store/${id}`)
+        return axios.get(`${apiUrlPrefix}/store/store/${id}`)
     }
     delete = id =>{
-        // return axios.delete(StoreApiUrl.concat(id))
-        return axios.delete(`http://localhost:8080/store/store/${id}`)
+        return axios.delete(`${apiUrlPrefix}/store/store/${id}`)
     }
     update = (id,data) =>{
-        // return axios.put(StoreApiUrl.concat(id),data)
-        return axios.put(`http://localhost:8080/store/store/${id}`,data)
+        return axios.put(`${apiUrlPrefix}/store/store/${id}`, data)
     }
 }
 
