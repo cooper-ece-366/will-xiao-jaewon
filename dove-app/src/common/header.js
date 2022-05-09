@@ -29,9 +29,6 @@ class AppHeader extends Component {
                                 <li>
                                     <NavLink to="/proxi">Proximity</NavLink>
                                 </li>
-                                <li>
-                                    <NavLink to="/profile">Profile</NavLink>
-                                </li>
                                 <li className="Login">
                                      <Login />
                                 </li>
