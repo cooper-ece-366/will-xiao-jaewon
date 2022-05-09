@@ -47,7 +47,7 @@ class AddStore extends Component {
                 Alert.success("New store info added!");
             } ,(error) =>{
                 console.log(error);
-                Alert.error("Invalid input!");
+                Alert.error("Operation failed!");
             }
         );
     }
@@ -65,8 +65,8 @@ class AddStore extends Component {
 
         return (
             <div>
-                <div class="container">
-                    <div class="card shadow bg-transparent">
+                <div className="container">
+                    <div class="card shadow bg-bg">
                         <div class="card-header card-font">
                             Add a New Store
                         </div>
@@ -75,30 +75,30 @@ class AddStore extends Component {
                                 <div class="form-group">
                                     <label htmlFor="storeNameInput" className="font-ch">Store Name</label>
                                     <input type="text" class="form-control" name="name"
-                                           placeholder="Enter Name" value={name} autoComplete="off" onChange={this.onInputChange} />
+                                           placeholder="Enter Here" value={name} autoComplete="off" onChange={this.onInputChange} />
                                 </div>
                                 <div class="form-group">
                                     <label htmlFor="addressInput" className="font-ch">Address</label>
                                     <input type="text" class="form-control" name="address"
-                                           placeholder="Enter Address" value={address} autoComplete="off" onChange={this.onInputChange}/>
+                                           placeholder="Enter Here" value={address} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="typeInput" className="font-ch">Store Type</label>
                                     <input type="text" className="form-control" name="type"
-                                           placeholder="Enter Store Type" value={type} autoComplete="off"
+                                           placeholder="Enter Here" value={type} autoComplete="off"
                                            onChange={this.onInputChange}/>
                                 </div>
                                 <div class="form-group">
                                     <label htmlFor="densityInput" className="font-ch">Population Density</label>
                                     <input type="text" class="form-control" name="density"
-                                           placeholder="Enter Density (range: 0-1)" value={density} autoComplete="off" onChange={this.onInputChange}/>
+                                           placeholder="Enter Here" value={density} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>
                                 <div class="form-group">
                                     <label htmlFor="infoInput" className="font-ch">Rules</label>
                                     <input type="text" className="form-control" name="info"
-                                           placeholder="Enter Rules" value={info} autoComplete="off" onChange={this.onInputChange}/>
+                                           placeholder="Enter Here" value={info} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>
-                                <div class="button-group" >
+                                <div class="button-group">
                                     <Button class="button" type="submit" variant="outline-primary"><FontAwesomeIcon icon={faPlusSquare} /> Add</Button>
                                     <Button class="button" type="reset" variant="outline-danger" onClick={this.resetInput}><FontAwesomeIcon icon={faUndo} /> Clear</Button>
                                 </div>

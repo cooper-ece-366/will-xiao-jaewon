@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react'
 import storeService from "../../services/storeService";
 import Alert from 'react-s-alert';
@@ -5,6 +6,7 @@ import {faXmark, faUpload, faRotateBack} from "@fortawesome/free-solid-svg-icons
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Button} from "react-bootstrap";
 import './UpdateStore.css';
+import CloseIcon from "@material-ui/icons/Close";
 
 //Reference: https://codebun.com/crud-operation-with-react-js-spring-boot-restapi-and-mysql/
 //Edited by Xiao Lin
@@ -72,7 +74,7 @@ class UpdateStore extends Component {
                 Alert.success("Store info updated!");
             } ,(error) =>{
                 console.log(error);
-                Alert.error("Invalid input!");
+                Alert.error("Operation failed!");
             }
         );
     }
@@ -102,7 +104,7 @@ class UpdateStore extends Component {
         return (
             <div>
                 <div className="container">
-                    <div class="card shadow bg-transparent">
+                    <div class="card shadow bg-bg">
                         <div class="card-header card-font">
                             Update Store Information
                         </div>
@@ -111,35 +113,35 @@ class UpdateStore extends Component {
                                 <div className="form-group">
                                     <label htmlFor="storeNameInput" className="font-ch">Store Name</label>
                                     <input type="text" className="form-control" name="name"
-                                           placeholder="Enter Name" value={name} autoComplete="off"
+                                           placeholder="Enter Here" value={name} autoComplete="off"
                                            onChange={this.onInputChange}/>
                                     <FontAwesomeIcon icon={faXmark} id="clearBtn" onClick={this.resetName}/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="addressInput" className="font-ch">Address</label>
                                     <input type="text" className="form-control" name="address"
-                                           placeholder="Enter Address" value={address} autoComplete="off"
+                                           placeholder="Enter Here" value={address} autoComplete="off"
                                            onChange={this.onInputChange}/>
                                     <FontAwesomeIcon icon={faXmark} id="clearBtn" onClick={this.resetAddress}/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="addressInput" className="font-ch">Store Type</label>
                                     <input type="text" className="form-control" name="type"
-                                           placeholder="Enter Store Type" value={type} autoComplete="off"
+                                           placeholder="Enter Here" value={type} autoComplete="off"
                                            onChange={this.onInputChange}/>
                                     <FontAwesomeIcon icon={faXmark} id="clearBtn" onClick={this.resetType}/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="densityInput" className="font-ch">Population Density</label>
                                     <input type="text" className="form-control" name="density"
-                                           placeholder="Enter Density (range: 0-1)" value={density} autoComplete="off"
+                                           placeholder="Enter Here" value={density} autoComplete="off"
                                            onChange={this.onInputChange}/>
                                     <FontAwesomeIcon icon={faXmark} id="clearBtn" onClick={this.resetDensity}/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="infoInput" className="font-ch">Rules</label>
                                     <input type="text" className="form-control" name="info"
-                                           placeholder="Enter Rules" value={info} autoComplete="off"
+                                           placeholder="Enter Here" value={info} autoComplete="off"
                                            onChange={this.onInputChange}/>
                                     <FontAwesomeIcon icon={faXmark} id="clearBtn" onClick={this.resetInfo}/>
                                 </div>

@@ -19,7 +19,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {format} from "react-string-format";
-import Alert from "react-s-alert";
 
 // const LoadingButton = ({onClick}) => {
 //     const [isLoading, setLoading] = useState(false);
@@ -70,21 +69,15 @@ const Proximity = () => {
                     .then(response => response.data)
                     .then((data) => {
                         // console.log(data);
-                        Alert.success("Nearby store updated!");
                         setStores(data.content);
-                    }, (error) => {
-                        console.log(error);
-                        Alert.error("Operation failed!");
                     });
             });
     }
 
     return (
-        <div className="container">
+        <div>
             <div>
-                <h1>Search Nearby Stores</h1>
                 <SearchBar
-                    placeholder="Enter an address ..."
                     onChange={(newAddr) => setAddr(newAddr)}
                     onRequestSearch={() => findStoresDist()}
                     style={{
@@ -93,15 +86,10 @@ const Proximity = () => {
                     }}
                 />  
             </div>
-            <div class="container">
-                <div style={{ float: "left" }}>
-                    <p> Detection Range-----</p>
-                    <p> </p>
-                </div>
+            <div class="h-25 p-20">
                 <Slider
                     value={distance}
                     trackLength={250}
-                    trackColor="grey"
                     min={1}
                     max={100}
                     stepSize={1}
@@ -109,11 +97,11 @@ const Proximity = () => {
                     onChange={(value) => {setDistance(value); console.log(value)}}
                     showValue={true}
                     valueRenderer={(value) => `${value}0m`}
-                    valueLabelPadding={19}
+                    valueLabelPadding={10}
                     />
                 {/* <LoadingButton onClick={findStoresDist}/> */}
             </div>
-            <div className="container">
+            <div className="list-container">
                 <table className="table table-bordered border-info">
                     <thead>
                     <tr>

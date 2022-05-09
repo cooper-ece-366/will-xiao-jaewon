@@ -5,6 +5,9 @@ import {apiUrlPrefix, StoreApiUrl} from "../const";
 //Reference: https://codebun.com/search-record-from-a-table-in-react-js-spring-boot-and-mysql
 // Edited by Xiao Lin
 class storeService{
+    getStore(){
+        return axios.get(StoreApiUrl);
+    }
 
     // Pageable endpoints
     getStores =(currentPage, recordPerPage) =>{

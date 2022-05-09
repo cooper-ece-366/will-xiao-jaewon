@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { getTime } from "../../util/APIUtils";
-import { Button } from 'react-bootstrap';
+import { Button, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import LoadingIndicator from '../../common/LoadingIndicator';
 import Alert from 'react-s-alert';
@@ -23,6 +23,7 @@ import {
     faCheckCircle
 } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import axios from "axios";
 
 // Reference1: exempli-gratia
 // Reference2: https://github.com/mightyjava/book-rest-api-reactjs
@@ -49,7 +50,12 @@ class StoreList extends Component {
     componentDidMount() {
         this.refreshTime();
         this.getStoresByPagination(this.state.currentPage);
+        /*
+        storeService.getStore().then((Response)=>{
+            this.setState({stores:Response.data})
+        });
         console.log("componentDidMount: state = %o", this.state);
+         */
     }
 
     /*
@@ -171,7 +177,7 @@ class StoreList extends Component {
     buttonClickedRefreshStoreInfo() {
         console.log('StoreList was refreshed!');
         this.refreshTime();
-        this.getStoresByPagination(this.state.currentPage);
+        console.log(this.state.storeName);
     }
 
     buttonClickedReRender() {
@@ -210,7 +216,7 @@ class StoreList extends Component {
                         </button>
                     </div>
                 </div>
-                <div className="container">
+                <div className="list-container">
                     <table className="table table-bordered border-info">
                         <thead>
                         <tr>
