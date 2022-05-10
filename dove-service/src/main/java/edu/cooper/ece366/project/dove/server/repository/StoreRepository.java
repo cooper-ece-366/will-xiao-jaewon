@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
-public interface StoreRepository extends JpaRepository<Store, Integer>{
+public interface StoreRepository extends JpaRepository<Store, Integer>{ // created by Will
 
     @Query("from Store s where s.name=:keyword OR s.address=:keyword OR s.info=:keyword OR s.type=:keyword OR s.id=:keyword")
     Page<Store> findAll(Pageable pageable, @Param("keyword") String keyword);

@@ -16,7 +16,7 @@ import java.io.IOException;
 //@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RequestMapping(value = "/api")
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class ControllerApi {
+public class ControllerApi { // edited by Will
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ControllerApi.class);
     private ObjectMapper objectMapper = new ObjectMapper();

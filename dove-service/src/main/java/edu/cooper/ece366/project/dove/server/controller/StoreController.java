@@ -21,7 +21,7 @@ import edu.cooper.ece366.project.dove.server.repository.StoreRepository;
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @RequestMapping(path="/store")
-public class StoreController { // edited by Will
+public class StoreController { // edited by Will, Jaewon
     @Autowired
     private StoreRepository storeRepository;
 

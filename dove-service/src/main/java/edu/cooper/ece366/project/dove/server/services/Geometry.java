@@ -3,7 +3,7 @@ package edu.cooper.ece366.project.dove.server.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Geometry {
+public class Geometry { // created by Jaewon
 
     private Location location ;
 
