@@ -470,6 +470,7 @@
 				<sonar.sources>.</sonar.sources>
 				<sonar.inclusions>src/main/java/**,src/main/resources/**</sonar.inclusions>
 				<sonar.exclusions>${code.coverage.exclusions}</sonar.exclusions>
+				<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
 				<sonar.projectKey>cooper-ece-366_will-xiao-jaewon</sonar.projectKey>
 				<sonar.organization>cooper-ece-366</sonar.organization>
 				<sonar.host.url>https://sonarcloud.io</sonar.host.url>
