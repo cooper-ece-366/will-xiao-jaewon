@@ -9,6 +9,9 @@ import org.springframework.http.MediaType;
 
         import javax.servlet.http.HttpServletRequest;
 
+// Reference: exempli-gratia
+// Edited by Xiao Lin
+
 @RestController
 public class ControllerClientIPAddress {
     @RequestMapping(

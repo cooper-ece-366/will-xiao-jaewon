@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+// Reference: exempli-gratia
+// Edited by Xiao Lin
+
 @Configuration
 public class WebConfig {
 

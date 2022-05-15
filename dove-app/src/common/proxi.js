@@ -21,6 +21,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {format} from "react-string-format";
 import Alert from "react-s-alert";
 
+// Edited by Jaewon Cho
+
 // const LoadingButton = ({onClick}) => {
 //     const [isLoading, setLoading] = useState(false);
   

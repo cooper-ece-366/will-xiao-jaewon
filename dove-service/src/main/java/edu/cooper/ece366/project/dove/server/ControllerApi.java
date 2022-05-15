@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+// Reference: exempli-gratia
+// Edited by Xiao Lin
+
 @RestController
 //@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RequestMapping(value = "/api")
@@ -40,6 +43,7 @@ public class ControllerApi {
         return(storeString);
     }
 
+    //Added by Will Wu
     @GetMapping("/location/{keyword}")
     public String getLocation(@PathVariable String keyword) throws IOException, InterruptedException {
         geoApi geoApi = new geoApi(keyword);
