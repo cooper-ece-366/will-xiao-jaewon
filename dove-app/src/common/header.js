@@ -5,7 +5,8 @@ import './header.css';
 import project_dove_logo from "../project-dove-logo.jpg";
 import Login from "./login";
 
-//Edited by Xiao Lin
+// Edited by Xiao Lin
+// The header will show our logo and branding on the left, and show the tabs on the right
 class AppHeader extends Component {
     render() {
         return (
