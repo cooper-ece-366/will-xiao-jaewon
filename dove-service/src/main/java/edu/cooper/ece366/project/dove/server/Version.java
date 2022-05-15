@@ -10,6 +10,9 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Properties;
 
+// Reference: exempli-gratia
+// Edited by Xiao Lin
+
 public final class Version {
     private static final Logger LOGGER = LoggerFactory.getLogger(Version.class);
 

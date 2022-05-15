@@ -7,6 +7,10 @@ import java.time.Instant;
 //@EqualsAndHashCode
 //@ToString
 //@AllArgsConstructor
+
+// Reference: exempli-gratia
+// Edited by Xiao Lin
+
 public class ApiTime {
 
     Long datetime;

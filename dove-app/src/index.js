@@ -6,6 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+//Reference: exempli-gratia
+//Edited by Xiao Lin
+
 ReactDOM.render(
     <Router>
         <App />

@@ -19,17 +19,5 @@ public interface StoreRepository extends JpaRepository<Store, Integer>{ // creat
     @Query("FROM Store s WHERE st_distance_sphere(POINT(:lng,:lat), s.coords) < :distance ORDER BY st_distance_sphere(POINT(:lng,:lat), s.coords)")
     Page<Store> findDistance(Pageable pageable, @Param("distance") int distance, @Param("lat") String lat, @Param("lng") String lng);
 
-//    Store findAllByName(String name);
-//
-//    List<Store> findByNameContaining(String name);
-//
-//    List<Store> findByDensityLessThan(Float density);
-//
-//    List<Store> findAll(Pageable pageable);
-//
-//
-//    @Override
-//    List<Store> findAll();
-
 
 }

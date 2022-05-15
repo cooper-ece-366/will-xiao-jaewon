@@ -2,6 +2,9 @@ package edu.cooper.ece366.project.dove.server;
 
 import javax.servlet.http.HttpServletRequest;
 
+// Reference: exempli-gratia
+// Edited by Xiao Lin
+
 public final class HttpUtils {
 
     private static final String[] IP_HEADERS = {

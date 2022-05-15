@@ -5,6 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+// Reference: exempli-gratia
+// Edited by Xiao Lin
+
 @SpringBootApplication
 public class RestApiServer {
     private static final Logger LOGGER = LoggerFactory.getLogger(RestApiServer.class);
