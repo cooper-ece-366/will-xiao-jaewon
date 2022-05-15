@@ -1,6 +1,6 @@
 package edu.cooper.ece366.project.dove.server.services;
 
-public class Location {
+public class Location { // edited by Will, Jaewon
 
     private String lat;
 

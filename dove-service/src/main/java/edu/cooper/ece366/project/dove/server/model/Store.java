@@ -21,7 +21,7 @@ import java.io.IOException;
 @NoArgsConstructor
 @Entity
 @Table(name = "stores")
-public class Store { // edited by Will
+public class Store { // edited by Will, Jaewon
     //Hard-coded store name and information
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

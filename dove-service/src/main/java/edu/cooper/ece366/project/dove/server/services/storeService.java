@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public interface storeService {
+public interface storeService { // created by Will,
     public Store addStore(Store store);
 
     public List<Store> getAllStore();

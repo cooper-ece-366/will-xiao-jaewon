@@ -3,7 +3,7 @@ package edu.cooper.ece366.project.dove.server.services;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class GoogleResponse {
+public class GoogleResponse { // created by Will
 
 
     private Result[] results;

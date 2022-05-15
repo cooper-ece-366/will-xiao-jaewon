@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class storeServiceImpl implements storeService{
+public class storeServiceImpl implements storeService{ // created by Will
 
     @Autowired
     private StoreRepository storeRepository;

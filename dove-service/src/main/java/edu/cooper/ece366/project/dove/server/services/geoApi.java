@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.apache.commons.io.IOUtils;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class geoApi { // edited by Will
+public class geoApi { // created by Will
 
     private static final String URL = "https://maps.googleapis.com/maps/api/geocode/json";
 
