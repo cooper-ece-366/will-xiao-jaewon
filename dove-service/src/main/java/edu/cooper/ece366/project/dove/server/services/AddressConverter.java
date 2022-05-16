@@ -21,7 +21,7 @@ public class AddressConverter { // created by Will
      */
 
     private static final String URL = "https://maps.googleapis.com/maps/api/geocode/json";
-    private static final String API_KEY = "AIzaSyCyenIgeYgjtL6p8rjiYi7MBRGy3omuxwo";
+    private static final String API_KEY = "placeholder";
 
     /*
      * Here the fullAddress String is in format like
