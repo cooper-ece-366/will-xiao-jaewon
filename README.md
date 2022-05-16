@@ -48,7 +48,7 @@
 - Setup configurations to build and run RestApiServer under will-xiao-jaewon/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/.
   1) Ensure that a Java 17 sdk is installed. 
 - Configure MySQL credentials in application.yml file under will-xiao-jaewon/dove-service/src/main/resources/.
-  1) Create a database named "dove" with a table named "stores".
+  1) Create a database with a table named "stores".
   2) Configure the username and password as well as the url for the datasource to match the MySQL credentials on the local machine.
 - Add the Google api key in GeoApi.java and AddressConverter.java under will-xiao-jaewon/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services.
   1) Replace the API_KEY = "placeholder" with the provided Google api key
