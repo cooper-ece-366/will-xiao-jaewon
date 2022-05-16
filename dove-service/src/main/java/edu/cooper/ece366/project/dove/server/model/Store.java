@@ -45,6 +45,55 @@ public class Store { // edited by Will, Jaewon
     @Column(name = "coords")
     private Point coords;
 
+    public Integer getId(){
+        return id;
+    }
+
+    public void setId(Integer id){
+        this.id = id;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public float getDensity(){
+        return density;
+    }
+
+    public void setDensity(float density){
+        this.density = density;
+    }
+
+    public String getAddress(){
+        return address;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public String getType(){
+        return type;
+    }
+
+    public void setType(String type){
+        this.type = type;
+    }
+
+    public String getInfo(){
+        return info;
+    }
+
+    public void setInfo(String info){
+        this.info = info;
+    }
+
+
     public Store newWithCoords() throws IOException, NoSuchAddressException {
         GoogleResponse res = new AddressConverter().convertToLatLong(this.address);
 
