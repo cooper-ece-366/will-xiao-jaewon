@@ -42,14 +42,16 @@
 
 ## Setup Guide (With Intellij)
 - Start by cloning the repository to a PC. 
-- Ensure that npm is installed correctly on the machine.
+- Ensure that npm and NodeJs is installed correctly on the machine.
 - Navigate to dove-app/ in the bottom terminal of Intellij.
-- Run 'npm install to' install required components. 
+- Run 'npm install' to install required components. 
 - Setup configurations to build and run RestApiServer under will-xiao-jaewon/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/.
   1) Ensure that a Java 17 sdk is installed. 
 - Configure MySQL credentials in application.yml file under will-xiao-jaewon/dove-service/src/main/resources/.
-  1) Create a database with a table named "stores".
+  1) Create a database named "dove" with a table named "stores".
   2) Configure the username and password as well as the url for the datasource to match the MySQL credentials on the local machine.
+- Add the Google api key in GeoApi.java and AddressConverter.java under will-xiao-jaewon/dove-service/src/main/java/edu/cooper/ece366/project/dove/server/services.
+  1) Replace the API_KEY = "placeholder" with the provided Google api key
 - Before running, ensure that port 3000 and 8080 are not already in use by other processes.
 - When ready to run, navigate to dove-app/ and run 'npm start' to start the application in a web browser.
 - Run RestApiServer to to start the backend services. 
