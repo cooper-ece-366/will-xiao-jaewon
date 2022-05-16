@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 // Reference: exempli-gratia
 // Edited by Xiao Lin
+
+//When navigated to a link that is not part of the app, show a 404 not found indicator with a button to go back
 class NotFound extends Component {
     render() {
         return (

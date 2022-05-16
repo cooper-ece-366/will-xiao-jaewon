@@ -2,8 +2,8 @@ import { API_BASE_URL, ACCESS_TOKEN } from '../const';
 
 //Reference: exempli-gratia
 //Edited by Xiao Lin
-//TODO: Needs edits after login branch
 
+// Create a fetch request, and get the response in json
 const request = (options) => {
     const headers = new Headers({
         'Content-Type': 'application/json',
@@ -28,12 +28,12 @@ const request = (options) => {
         );
 };
 
+/*
+// Unused login/logout requests
 export function getCurrentUser() {
-    /*
     if(!localStorage.getItem(ACCESS_TOKEN)) {
         return Promise.reject("No access token set.");
     }
-    */
 
     return request({
         url: API_BASE_URL + "/user/me",
@@ -41,7 +41,6 @@ export function getCurrentUser() {
     });
 }
 
-/*
 export function login(loginRequest) {
     return request({
         url: API_BASE_URL + "/auth/login",
@@ -67,6 +66,7 @@ export function signup(signupRequest) {
 }
  */
 
+// Get the current time from the backend server
 export function getTime() {
     /*
     if(!localStorage.getItem(ACCESS_TOKEN)) {
@@ -80,14 +80,15 @@ export function getTime() {
     });
 }
 
+/*
+// Outdated getStore function
 export function getStoreInfo() {
-    /*
     if(!localStorage.getItem(ACCESS_TOKEN)) {
         return Promise.reject("No access token set.");
     }
-    */
     return request({
         url: API_BASE_URL + "/api/store",
         method: 'GET'
     });
 }
+*/

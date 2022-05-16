@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
 
+// Edited by Jaewon Cho
 const Login = () => {
     const [user, setUser] = useState(() => {
         const saved = localStorage.getItem("googleId");

@@ -1,5 +1,8 @@
 import { useEffect, useRef } from 'react';
 
+// Reference: exempli-gratia
+// Edited by Xiao Lin
+
 function useInterval(callback, delay) {
   const savedCallback = useRef();
 

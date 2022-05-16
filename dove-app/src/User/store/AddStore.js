@@ -12,8 +12,9 @@ import storeService from "../../services/storeService";
 
 // Reference1: https://github.com/mightyjava/book-rest-api-reactjs
 // Reference2: https://codebun.com/crud-operation-with-react-js-spring-boot-restapi-and-mysql/
-
 // Edited by Xiao Lin
+
+// Create a component that provide the functionality to add a new store to the backend database
 class AddStore extends Component {
     constructor(props){
         super(props);
@@ -26,12 +27,14 @@ class AddStore extends Component {
         };
     }
 
+    // When form field input changes, assign value to event target
     onInputChange = event => {
         this.setState({
             [event.target.name]:event.target.value
         });
     }
 
+    // After submitting the form, set the current state as the attribute of the object and post it to the backend
     formHandle = event =>{
         event.preventDefault();
         const store = {
@@ -47,11 +50,12 @@ class AddStore extends Component {
                 Alert.success("New store info added!");
             } ,(error) =>{
                 console.log(error);
-                Alert.error("Operation failed!");
+                Alert.error("Invalid input!");
             }
         );
     }
 
+    // reset the inputs in all form fields
     resetInput = () => {
         this.setState({"name":''})
         this.setState({"address":''})
@@ -65,40 +69,41 @@ class AddStore extends Component {
 
         return (
             <div>
-                <div className="container">
-                    <div class="card shadow bg-bg">
+                <div class="container">
+                    <div class="card shadow bg-transparent">
                         <div class="card-header card-font">
                             Add a New Store
                         </div>
+                        {/* Show a form that allows the user to input the attributes of the store */}
                         <div class="card-body">
                             <form onSubmit={this.formHandle}>
                                 <div class="form-group">
                                     <label htmlFor="storeNameInput" className="font-ch">Store Name</label>
                                     <input type="text" class="form-control" name="name"
-                                           placeholder="Enter Here" value={name} autoComplete="off" onChange={this.onInputChange} />
+                                           placeholder="Name" value={name} autoComplete="off" onChange={this.onInputChange} />
                                 </div>
                                 <div class="form-group">
                                     <label htmlFor="addressInput" className="font-ch">Address</label>
                                     <input type="text" class="form-control" name="address"
-                                           placeholder="Enter Here" value={address} autoComplete="off" onChange={this.onInputChange}/>
+                                           placeholder="Address" value={address} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="typeInput" className="font-ch">Store Type</label>
                                     <input type="text" className="form-control" name="type"
-                                           placeholder="Enter Here" value={type} autoComplete="off"
-                                           onChange={this.onInputChange}/>
+                                           placeholder="Store Type" value={type} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>
                                 <div class="form-group">
                                     <label htmlFor="densityInput" className="font-ch">Population Density</label>
                                     <input type="text" class="form-control" name="density"
-                                           placeholder="Enter Here" value={density} autoComplete="off" onChange={this.onInputChange}/>
+                                           placeholder="Density (range: 0-1)" value={density} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>
                                 <div class="form-group">
                                     <label htmlFor="infoInput" className="font-ch">Rules</label>
                                     <input type="text" className="form-control" name="info"
-                                           placeholder="Enter Here" value={info} autoComplete="off" onChange={this.onInputChange}/>
+                                           placeholder="Rules" value={info} autoComplete="off" onChange={this.onInputChange}/>
                                 </div>
-                                <div class="button-group">
+                                {/* Display two buttons, one is the submission button, one is the clear all button */}
+                                <div class="button-group" >
                                     <Button class="button" type="submit" variant="outline-primary"><FontAwesomeIcon icon={faPlusSquare} /> Add</Button>
                                     <Button class="button" type="reset" variant="outline-danger" onClick={this.resetInput}><FontAwesomeIcon icon={faUndo} /> Clear</Button>
                                 </div>

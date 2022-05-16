@@ -12,7 +12,7 @@ import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
 
-public class AddressConverter {
+public class AddressConverter { // created by Will
     /*
      * Geocode request URL. Here see we are passing "json" it means we will get
      * the output in JSON format. You can also pass "xml" instead of "json" for
@@ -21,7 +21,7 @@ public class AddressConverter {
      */
 
     private static final String URL = "https://maps.googleapis.com/maps/api/geocode/json";
-    private static final String API_KEY = "AIzaSyCyenIgeYgjtL6p8rjiYi7MBRGy3omuxwo";
+    private static final String API_KEY = "placeholder";
 
     /*
      * Here the fullAddress String is in format like

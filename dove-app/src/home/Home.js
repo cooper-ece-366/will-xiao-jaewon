@@ -3,9 +3,11 @@ import '../const/index.js';
 import './Home.scss';
 import {TweenMax, Linear} from 'gsap';
 
-//Reference: City Illustration by Salzburg
-//https://codepen.io/lisilinhart/pen/MoqMQq
-//Edited by Xiao Lin
+// Reference: City Illustration by Salzburg
+// https://codepen.io/lisilinhart/pen/MoqMQq
+// Edited by Xiao Lin
+// Show a svg city illustration as the home page
+// the houses will be fill with color once they are clicked
 class Home extends Component {
 
     componentDidMount() {

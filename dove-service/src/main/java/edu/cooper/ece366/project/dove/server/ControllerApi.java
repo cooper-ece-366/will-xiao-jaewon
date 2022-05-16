@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+// Reference: exempli-gratia
+// Edited by Xiao Lin
+
 @RestController
 //@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RequestMapping(value = "/api")
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class ControllerApi {
+public class ControllerApi { // edited by Will
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ControllerApi.class);
     private ObjectMapper objectMapper = new ObjectMapper();
@@ -40,6 +43,7 @@ public class ControllerApi {
         return(storeString);
     }
 
+    //Added by Will Wu
     @GetMapping("/location/{keyword}")
     public String getLocation(@PathVariable String keyword) throws IOException, InterruptedException {
         geoApi geoApi = new geoApi(keyword);

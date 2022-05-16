@@ -17,11 +17,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.apache.commons.io.IOUtils;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class geoApi { // edited by Will
+public class geoApi { // created by Will
 
     private static final String URL = "https://maps.googleapis.com/maps/api/geocode/json";
 
-    private static final String API_KEY = "AIzaSyCyenIgeYgjtL6p8rjiYi7MBRGy3omuxwo";
+    private static final String API_KEY = "placeholder";
 
     String lat;
     String lng;

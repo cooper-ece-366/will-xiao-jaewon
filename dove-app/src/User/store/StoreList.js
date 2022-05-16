@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { getTime } from "../../util/APIUtils";
-import { Button, Row } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import LoadingIndicator from '../../common/LoadingIndicator';
 import Alert from 'react-s-alert';
@@ -23,13 +23,13 @@ import {
     faCheckCircle
 } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import axios from "axios";
 
 // Reference1: exempli-gratia
 // Reference2: https://github.com/mightyjava/book-rest-api-reactjs
 // Reference3: https://codebun.com/how-to-create-a-pagination-in-react-js-and-spring-boot/
 // Edited by Xiao Lin
 
+//Display a store list with dynamic pagination, with embedded edit and deletion functionalities
 class StoreList extends Component {
     constructor(props) {
         super(props);
@@ -47,15 +47,11 @@ class StoreList extends Component {
         this.buttonClickedReRender = this.buttonClickedReRender.bind(this);
     }
 
+    //After loaded, get current time and store list information from the backend
     componentDidMount() {
         this.refreshTime();
         this.getStoresByPagination(this.state.currentPage);
-        /*
-        storeService.getStore().then((Response)=>{
-            this.setState({stores:Response.data})
-        });
         console.log("componentDidMount: state = %o", this.state);
-         */
     }
 
     /*
@@ -75,8 +71,9 @@ class StoreList extends Component {
         console.log("shouldComponentUpdate: state = %o", this.state);
         return(true);
     }
-*/
+    */
 
+    // Make the request to the endpoint to retrieve current time, convert it to readable time, and update the state
     refreshTime() {
         getTime()
         .then(response => {
@@ -95,12 +92,15 @@ class StoreList extends Component {
         });
     }
 
+    // Make the request to the endpoint to retrieve store list, and set the state with the response data
+    // The response data is in the pageable format
     getStoresByPagination(currentPage){
         currentPage=currentPage-1;
         storeService.getStores(currentPage, this.state.recordPerPage)
         //axios.get("http://localhost:8080/store/?page="+currentPage+"&size="+this.state.recordPerPage)
             .then(response => response.data).then((data) =>{
-            this.setState({stores:data.content,
+            this.setState({
+                stores:data.content,
                 totalPages:data.totalPages,
                 totalElements: data.totalElements,
                 currentPage: data.number+1
@@ -108,18 +108,21 @@ class StoreList extends Component {
         });
     }
 
+    // Display next page
     showNextPage = () =>{
         if(this.state.currentPage < Math.ceil(this.state.totalElements/this.state.recordPerPage)){
             this.getStoresByPagination(this.state.currentPage + 1);
         }
     };
 
+    // Display last page
     showLastPage = () =>{
         if(this.state.currentPage < Math.ceil(this.state.totalElements/this.state.recordPerPage)){
             this.getStoresByPagination(Math.ceil(this.state.totalElements/this.state.recordPerPage));
         }
     };
 
+    // Display first page
     showFirstPage = ()=>{
         let firstPage = 1;
         if(this.state.currentPage > firstPage){
@@ -127,6 +130,7 @@ class StoreList extends Component {
         }
     };
 
+    // Display previous page
     showPrevPage = () =>{
         let prevPage = 1
         if(this.state.currentPage > prevPage){
@@ -134,19 +138,22 @@ class StoreList extends Component {
         }
     };
 
+    // When the search button is clicked, assign value to event target
     searchInput = (event) => {
         this.setState({
-            //assigning value to event target
             [event.target.name]:event.target.value,
         });
     };
 
+    // Make the request to the endpoint to retrieve the updated store list using the search input
+    // And set the state with the response data
     searchStore = (currentPage) => {
         currentPage=currentPage-1;
         storeService.storeSearch(currentPage, this.state.recordPerPage, this.state.search)
         //axios.get("http://localhost:8080/store/"+this.state.search+"?page="+currentPage+"&size="+this.state.recordPerPage)
             .then(response => response.data).then((data) =>{
-            this.setState({stores:data.content,
+            this.setState({
+                stores:data.content,
                 totalPages:data.totalPages,
                 totalElements: data.totalElements,
                 currentPage: data.number+1
@@ -154,11 +161,13 @@ class StoreList extends Component {
         });
     };
 
+    // Reset the search input field and reload the original pagination
     resetSearch = (currentPage) => {
         this.setState({"search":''});
         this.getStoresByPagination(this.state.currentPage);
     };
 
+    // Find the store by its id and delete it from the backend database
     deleteStore = (id) => {
         storeService.delete(id).then(
             (response) => {
@@ -174,16 +183,19 @@ class StoreList extends Component {
         );
     };
 
+    // Refresh time and store list when button is clicked
     buttonClickedRefreshStoreInfo() {
         console.log('StoreList was refreshed!');
         this.refreshTime();
-        console.log(this.state.storeName);
+        this.getStoresByPagination(this.state.currentPage);
     }
 
+    //Render the page when button is clicked
     buttonClickedReRender() {
         this.render();
     }
 
+    // Added by Jaewon Cho
     openMap(e, addr) {
         locationService.getCoords(addr)
             .then(response => response.data)
@@ -204,6 +216,7 @@ class StoreList extends Component {
         return (
             <div className="store-container">
                 <h1>Store List</h1>
+                {/* The search part contains one input field, and two buttons (search button and reset button) */}
                 <div className="container">
                     <div className="form-group mb-2">
                         <input type="text" className="form-control" name="search" size="50"
@@ -216,11 +229,12 @@ class StoreList extends Component {
                         </button>
                     </div>
                 </div>
-                <div className="list-container">
+                {/* The store list part shows the attributes of the stores and has the edit and delete buttons */}
+                <div className="container">
                     <table className="table table-bordered border-info">
                         <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>id</th>
                             <th>Store</th>
                             <th>Type</th>
                             <th>Address</th>
@@ -235,10 +249,12 @@ class StoreList extends Component {
                             stores.map(
                                 (stores,index) =>(
                                     <tr key = {stores.id}>
-                                        <td>{(recordPerPage*(currentPage-1))+index+1}</td>
+                                        <td>{stores.id}</td>
                                         <td>{stores.name}</td>
                                         <td>{stores.type}</td>
+                                        {/* Redirect to the openstreetmap with the given address */}
                                         <td><a href="#" onClick={((e) => this.openMap(e, stores.address))}>{stores.address}</a></td>
+                                        {/*If the density is higher than 0.8, the display will be red; if the density is less than 0.8 but higher than 0.5, the display will be yellow; otherwise, the display will be green */}
                                         <td>{stores.density>0.8 ?
                                             (<Button type="button" variant="danger"
                                             ><FontAwesomeIcon icon={faXmarkCircle} /> {stores.density}</Button>) :
@@ -248,6 +264,7 @@ class StoreList extends Component {
                                                  (<Button type="button" variant="warning"
                                             ><FontAwesomeIcon icon={faWarning} /> {stores.density}</Button>)}</td>
                                         <td>{stores.info}</td>
+                                        {/* Edit and delete buttons */}
                                         <td><Link to={`/update-stores/${stores.id}`} className="btn btn-outline-primary"><FontAwesomeIcon icon={faEdit} /> Edit</Link>
                                             <button className="btn btn-outline-danger" onClick={() => { this.deleteStore(stores.id) }}>
                                             <FontAwesomeIcon icon={faTrash} /> Delete</button>
@@ -258,13 +275,13 @@ class StoreList extends Component {
                         }
                         </tbody>
                     </table>
+                    {/* The pagination part contains a page number display and a button group to navigate to other pages */}
                     <table className="table">
-                        <div style={{float: 'left', fontFamily: 'monospace', color: '#0275d8', padding: '8px'}}>
+                        <div className="page-number">
                             Page {currentPage} of {totalPages}
                         </div>
-                        <div style={{float: 'right'}}>
-                            <div className="clearfix"></div>
-                            <nav aria-label="Page navigation example">
+                        <div className="pagination-buttons">
+                            <nav>
                                 <ul className="pagination">
                                     <li className="button"><Button type="button" className="page-link" variant="outline-info" disabled={currentPage === 1} onClick={this.showFirstPage}
                                                                  ><FontAwesomeIcon icon={faFastBackward} /> First</Button></li>
@@ -279,6 +296,7 @@ class StoreList extends Component {
                         </div>
                     </table>
                 </div>
+                {/* The time part contains a last refresh time display and buttons to refresh store list and re-render */}
                 <div className="time-container">
                     <div className="store-info">
                         <div className="time">
